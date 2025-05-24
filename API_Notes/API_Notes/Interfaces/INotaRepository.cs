@@ -19,6 +19,8 @@ namespace API_Notes.Interfaces
         List<PesquisaViewModel> CampoPesquisa(string palavraPesquisa);
 
         List<PesquisaViewModel> CampoPesquisaArquivada(string palavraPesquisa);
+        
+        List<ListarNotasViewModel> ListarTodosArquivado(int idUsuario);
 
     }
 }

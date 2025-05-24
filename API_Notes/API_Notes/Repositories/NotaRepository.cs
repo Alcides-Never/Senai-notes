@@ -220,30 +220,32 @@ namespace API_Notes.Repositories
 
             // Tratativa das tags usando List
 
-            // Novas Tags 
+            // Novas Tags que eu recebi do front
             var novasTags = nota.Tags
                 .Select(n => n.ToLower())
                 .Distinct()
                 .ToList();
 
-            // buscar tags vinculadas
+            // buscar tags, atraves do intermediario, que estejam vinculadas a Nota. Ou sejas, as tags que já estão na base
             var validacaoTags = _context.NotasTags
                        .Where(vt => vt.IdNotas == idNota)
                        .Include(vt => vt.IdTagNavigation)
                        .ToList();
 
-            // Adicionar novas tags que não existem
+            // Remove as linhas da intermediaria de tags que não existem na lista recebida pelo front
             foreach (var tagAtual in validacaoTags)
             {
                 if (novasTags.Contains(tagAtual.IdTagNavigation.Nome) == false)
                 {
                     _context.NotasTags.Remove(tagAtual);
+                    _context.SaveChanges();
                 }
             }
 
-            // Criação das Tags
+            // Criacao das novas Tags
             foreach (var tagTexto in novasTags)
             {
+                // A variável abaixo pega a lista de tags novas, compara com a tag, ele compara o user ID pois cada tag tem seu usuario.
                 var tagExistente = _context.Tags
                     .FirstOrDefault(t => t.Nome == tagTexto && t.IdUsuario == nota.IdUsuario);
 
@@ -259,7 +261,7 @@ namespace API_Notes.Repositories
                     _context.SaveChanges();
                 }
 
-                //Verifica se a relacao já existe
+                //Verifica se a relacao já existe usando o booleano. O any valida a existencia apenas.
                 bool relacaoExistente = _context.NotasTags
                     .Any(re => re.IdNotas == idNota && re.IdTag == tagExistente.IdTag);
                 if (relacaoExistente == false)
@@ -269,6 +271,7 @@ namespace API_Notes.Repositories
                         IdNotas = idNota,
                         IdTag = tagExistente.IdTag
                     });
+                    _context.SaveChanges();
                 }
             }
             _context.SaveChanges();
@@ -363,6 +366,33 @@ namespace API_Notes.Repositories
                 }).ToList();
 
             return resultadoPesquisa;
+        }
+
+        public List<ListarNotasViewModel> ListarTodosArquivado(int idUsuario)
+        {
+            {
+                return _context.Notas
+                    .Where(n => n.IdUsuario == idUsuario && n.Arquivada == true)
+                    .Include(n => n.NotasTags)
+                    .ThenInclude(t => t.IdTagNavigation)
+                    .Select(
+                        c => new ListarNotasViewModel
+                        {
+                            IdNotas = c.IdNotas,
+                            Titulo = c.Titulo,
+                            DataCriacao = c.DataCriacao,
+                            DataEdicao = c.DataEdicao,
+                            ImgUrl = c.ImgUrl,
+                            Tags = c.NotasTags!
+                                .Select(nt => new ListarTagsViewModel
+                                {
+                                    IdTag = nt.IdTagNavigation.IdTag,
+                                    Nome = nt.IdTagNavigation.Nome
+                                })
+                                .ToList()
+                        })
+                    .ToList();
+            }
         }
     }
 }

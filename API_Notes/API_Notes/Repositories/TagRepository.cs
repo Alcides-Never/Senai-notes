@@ -40,7 +40,6 @@ namespace API_Notes.Repositories
         public List<RetornoTagViewModel> BuscarTag(int tagId, int userId)
         {
             var tagRetorno = _context.NotasTags
-                //.Include(t => _context.Notas)
                 .Where(n => n.IdTag == tagId && n.IdNotasNavigation.Arquivada == false && n.IdNotasNavigation.IdUsuario == userId)
                 .Select(n => new RetornoTagViewModel
                 {

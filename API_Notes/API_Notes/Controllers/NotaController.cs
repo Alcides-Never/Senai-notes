@@ -51,7 +51,7 @@ public class NotaController : Controller
             return NoContent();
     }
 
-    [HttpPut("arquivarNota/{IdNota}")]
+    [HttpPut("arquivarNota/{idNota}")]
     public IActionResult ArquivarNota(int IdNota)
     {
         _notaRepository.ArquivarNota(IdNota);
@@ -68,5 +68,11 @@ public class NotaController : Controller
     public IActionResult CampoPesquisaArquivada(string palavraPesquisada)
     {
         return Ok(_notaRepository.CampoPesquisaArquivada(palavraPesquisada));
+    }
+
+    [HttpGet("ListarTodosArquivado/{idUsuario}")]
+    public IActionResult ListarTodosArquivado(int idUsuario)
+    {
+        return Ok(_notaRepository.ListarTodosArquivado(idUsuario));
     }
 }   
