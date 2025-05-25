@@ -31,13 +31,13 @@ public partial class SenaiNotesContext : DbContext
     public virtual DbSet<Usuario> Usuarios { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        => optionsBuilder.UseSqlServer(
-            "Data Source=localhost, 1433;Initial Catalog=SENAI_NOTES;User Id=sa;Password=Senai@134;TrustServerCertificate=true;");
+    /*    => optionsBuilder.UseSqlServer(
+            "Data Source=localhost, 1433;Initial Catalog=SENAI_NOTES;User Id=sa;Password=Senai@134;TrustServerCertificate=true;");*/
 
-    /* {
+     {
          var con = _configuration.GetConnectionString("DefaultConnection");
          optionsBuilder.UseSqlServer(con);
-     } */
+     } 
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -91,7 +91,7 @@ public partial class SenaiNotesContext : DbContext
         {
             entity.HasKey(e => e.IdNotasTag).HasName("PK__Notas_Ta__85E115E50ABD5B10");
 
-            entity.ToTable("Notas_Tag", tb => tb.HasTrigger("trg_audit_notas_tag"));
+            entity.ToTable("Notas_Tag");
 
             entity.Property(e => e.IdNotasTag).HasColumnName("Id_Notas_Tag");
             entity.Property(e => e.IdNotas).HasColumnName("Id_Notas");

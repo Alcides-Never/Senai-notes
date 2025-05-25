@@ -1,0 +1,5 @@
+publicacao de api
+(colocar a api na intaernet)
+
+publicacao
+aws, azure, cloud google

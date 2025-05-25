@@ -1,0 +1,1 @@
+dotnet ef dbcontext scaffold "Data Source=tcp:senainotesserver.database.windows.net,1433;Initial Catalog=SENAI_NOTES;Persist Security Info=False;User ID=LoginAlexandreBack;Password=BackSenai@134;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;" Microsoft.EntityFrameworkCore.SqlServer  --context-dir Context --output-dir Models --force
