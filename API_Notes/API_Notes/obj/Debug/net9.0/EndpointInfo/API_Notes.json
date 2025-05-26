@@ -5,10 +5,21 @@
     "version": "1.0"
   },
   "paths": {
-    "/api/Nota/listar": {
+    "/api/Nota/listar/{idUsuario}": {
       "get": {
         "tags": [
           "Nota"
+        ],
+        "parameters": [
+          {
+            "name": "idUsuario",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
         ],
         "responses": {
           "200": {
@@ -24,6 +35,11 @@
         ],
         "requestBody": {
           "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/CadastrarNotaDTO"
+              }
+            },
             "application/json": {
               "schema": {
                 "$ref": "#/components/schemas/CadastrarNotaDTO"
@@ -47,10 +63,483 @@
           }
         }
       }
+    },
+    "/api/Nota/buscarNota/{idNota}": {
+      "get": {
+        "tags": [
+          "Nota"
+        ],
+        "parameters": [
+          {
+            "name": "idNota",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Nota/editarNota/{idNota}": {
+      "put": {
+        "tags": [
+          "Nota"
+        ],
+        "parameters": [
+          {
+            "name": "idNota",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/AtualizarNotaDTO"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AtualizarNotaDTO"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AtualizarNotaDTO"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/AtualizarNotaDTO"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Nota/excluirNota/{idNota}": {
+      "delete": {
+        "tags": [
+          "Nota"
+        ],
+        "parameters": [
+          {
+            "name": "idNota",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Nota/arquivarNota/{idNota}": {
+      "put": {
+        "tags": [
+          "Nota"
+        ],
+        "parameters": [
+          {
+            "name": "IdNota",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Nota/CampoPesquisa/{palavraPesquisada}": {
+      "get": {
+        "tags": [
+          "Nota"
+        ],
+        "parameters": [
+          {
+            "name": "palavraPesquisada",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Nota/CampoPesquisaArquivada/{palavraPesquisada}": {
+      "get": {
+        "tags": [
+          "Nota"
+        ],
+        "parameters": [
+          {
+            "name": "palavraPesquisada",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Nota/ListarTodosArquivado/{idUsuario}": {
+      "get": {
+        "tags": [
+          "Nota"
+        ],
+        "parameters": [
+          {
+            "name": "idUsuario",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Tag/listartag/{userId}": {
+      "get": {
+        "tags": [
+          "Tag"
+        ],
+        "summary": "Lista todas as Tags",
+        "description": "Este método lista todas as tags com base do ID do usuario",
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Tag/RetornoTag": {
+      "get": {
+        "tags": [
+          "Tag"
+        ],
+        "parameters": [
+          {
+            "name": "tagId",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "userId",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/UsuarioControllers/ListarTodos": {
+      "get": {
+        "tags": [
+          "UsuarioControllers"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/Buscar/{nome}": {
+      "get": {
+        "tags": [
+          "UsuarioControllers"
+        ],
+        "summary": "Buscar por nome",
+        "description": "Esta endpoint busca nomes dos usuarios",
+        "parameters": [
+          {
+            "name": "nome",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/UsuarioControllers/cadastrar": {
+      "post": {
+        "tags": [
+          "UsuarioControllers"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/CadastrarUsuarioDTO"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CadastrarUsuarioDTO"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CadastrarUsuarioDTO"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/CadastrarUsuarioDTO"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/UsuarioControllers/listar/{id}": {
+      "get": {
+        "tags": [
+          "UsuarioControllers"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/UsuarioControllers/editar/{id}": {
+      "put": {
+        "tags": [
+          "UsuarioControllers"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Usuario"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Usuario"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Usuario"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Usuario"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/UsuarioControllers/deletar/{id}": {
+      "delete": {
+        "tags": [
+          "UsuarioControllers"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/UsuarioControllers/login": {
+      "post": {
+        "tags": [
+          "UsuarioControllers"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/LoginDTO"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LoginDTO"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LoginDTO"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/LoginDTO"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
     }
   },
   "components": {
     "schemas": {
+      "AtualizarNotaDTO": {
+        "type": "object",
+        "properties": {
+          "titulo": {
+            "type": "string",
+            "nullable": true
+          },
+          "conteudo": {
+            "type": "string",
+            "nullable": true
+          },
+          "dataEdicao": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "imgUrl": {
+            "type": "string",
+            "nullable": true
+          },
+          "tags": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          },
+          "idUsuario": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
       "CadastrarNotaDTO": {
         "type": "object",
         "properties": {
@@ -67,17 +556,248 @@
             "format": "date-time",
             "nullable": true
           },
-          "arquivada": {
-            "type": "boolean",
-            "nullable": true
-          },
-          "tags": {
+          "imgUrl": {
             "type": "string",
             "nullable": true
           },
           "idUsuario": {
             "type": "integer",
             "format": "int32"
+          },
+          "tags": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "CadastrarUsuarioDTO": {
+        "type": "object",
+        "properties": {
+          "idUsuario": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "email": {
+            "type": "string",
+            "nullable": true
+          },
+          "senha": {
+            "type": "string",
+            "nullable": true
+          },
+          "nome": {
+            "type": "string",
+            "nullable": true
+          },
+          "dataCriacao": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "tags": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ConfiguracaoUsuario": {
+        "type": "object",
+        "properties": {
+          "idConfig": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "idUsuario": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "fonte": {
+            "type": "string",
+            "nullable": true
+          },
+          "tema": {
+            "type": "boolean",
+            "nullable": true
+          },
+          "idUsuarioNavigation": {
+            "$ref": "#/components/schemas/Usuario"
+          }
+        },
+        "additionalProperties": false
+      },
+      "LoginDTO": {
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string",
+            "nullable": true
+          },
+          "senha": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Nota": {
+        "type": "object",
+        "properties": {
+          "idNotas": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "idUsuario": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "titulo": {
+            "type": "string",
+            "nullable": true
+          },
+          "conteudo": {
+            "type": "string",
+            "nullable": true
+          },
+          "dataCriacao": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "dataEdicao": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "arquivada": {
+            "type": "boolean",
+            "nullable": true
+          },
+          "imgUrl": {
+            "type": "string",
+            "nullable": true
+          },
+          "idUsuarioNavigation": {
+            "$ref": "#/components/schemas/Usuario"
+          },
+          "notasTags": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/NotasTag"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "NotasTag": {
+        "type": "object",
+        "properties": {
+          "idNotasTag": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "idNotas": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "idTag": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "idNotasNavigation": {
+            "$ref": "#/components/schemas/Nota"
+          },
+          "idTagNavigation": {
+            "$ref": "#/components/schemas/Tag"
+          }
+        },
+        "additionalProperties": false
+      },
+      "Tag": {
+        "type": "object",
+        "properties": {
+          "idTag": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "idUsuario": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "nome": {
+            "type": "string",
+            "nullable": true
+          },
+          "idUsuarioNavigation": {
+            "$ref": "#/components/schemas/Usuario"
+          },
+          "notasTags": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/NotasTag"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Usuario": {
+        "type": "object",
+        "properties": {
+          "idUsuario": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "email": {
+            "type": "string",
+            "nullable": true
+          },
+          "senha": {
+            "type": "string",
+            "nullable": true
+          },
+          "dataCriacao": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "nome": {
+            "type": "string",
+            "nullable": true
+          },
+          "configuracaoUsuarios": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ConfiguracaoUsuario"
+            },
+            "nullable": true
+          },
+          "nota": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Nota"
+            },
+            "nullable": true
+          },
+          "tags": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Tag"
+            },
+            "nullable": true
           }
         },
         "additionalProperties": false

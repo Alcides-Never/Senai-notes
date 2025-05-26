@@ -1072,7 +1072,7 @@
           }
         }
       },
-      "Swashbuckle.AspNetCore.Swagger/8.1.1": {
+      "Swashbuckle.AspNetCore.Swagger/8.1.2": {
         "type": "package",
         "dependencies": {
           "Microsoft.OpenApi": "1.6.23"
@@ -1091,10 +1091,10 @@
           "Microsoft.AspNetCore.App"
         ]
       },
-      "Swashbuckle.AspNetCore.SwaggerGen/8.1.1": {
+      "Swashbuckle.AspNetCore.SwaggerGen/8.1.2": {
         "type": "package",
         "dependencies": {
-          "Swashbuckle.AspNetCore.Swagger": "8.1.1"
+          "Swashbuckle.AspNetCore.Swagger": "8.1.2"
         },
         "compile": {
           "lib/net9.0/Swashbuckle.AspNetCore.SwaggerGen.dll": {
@@ -1107,7 +1107,7 @@
           }
         }
       },
-      "Swashbuckle.AspNetCore.SwaggerUI/8.1.1": {
+      "Swashbuckle.AspNetCore.SwaggerUI/8.1.2": {
         "type": "package",
         "compile": {
           "lib/net9.0/Swashbuckle.AspNetCore.SwaggerUI.dll": {
@@ -3742,10 +3742,10 @@
         "swashbuckle.aspnetcore.annotations.nuspec"
       ]
     },
-    "Swashbuckle.AspNetCore.Swagger/8.1.1": {
-      "sha512": "h+8D5jQtnl6X4f2hJQwf0Khj0SnCQANzirCELjXJ6quJ4C1aNNCvJrAsQ+4fOKAMqJkvW48cKj79ftG+YoGcRg==",
+    "Swashbuckle.AspNetCore.Swagger/8.1.2": {
+      "sha512": "5GTvC2Lbv3LnEHllm4N3LxpRSrDkVSBjUPlPHg3oIN7VJhxxuysYuTXzS2hExf3tuCPsTa5/TaDoCzfBlI05SQ==",
       "type": "package",
-      "path": "swashbuckle.aspnetcore.swagger/8.1.1",
+      "path": "swashbuckle.aspnetcore.swagger/8.1.2",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -3759,14 +3759,14 @@
         "lib/netstandard2.0/Swashbuckle.AspNetCore.Swagger.pdb",
         "lib/netstandard2.0/Swashbuckle.AspNetCore.Swagger.xml",
         "package-readme.md",
-        "swashbuckle.aspnetcore.swagger.8.1.1.nupkg.sha512",
+        "swashbuckle.aspnetcore.swagger.8.1.2.nupkg.sha512",
         "swashbuckle.aspnetcore.swagger.nuspec"
       ]
     },
-    "Swashbuckle.AspNetCore.SwaggerGen/8.1.1": {
-      "sha512": "2EuPzXSNleOOzYvziERWRLnk1Oz9i0Z1PimaUFy1SasBqeV/rG+eMfwFAMtTaf4W6gvVOzRcUCNRHvpBIIzr+A==",
+    "Swashbuckle.AspNetCore.SwaggerGen/8.1.2": {
+      "sha512": "R91Wt4NpBJAgkx924Scv22WC80NmZH1VMgUNbmvqNfXE3H07noA4Q8wUMkBwJehQiRJr3Ts519JoScKazbLcww==",
       "type": "package",
-      "path": "swashbuckle.aspnetcore.swaggergen/8.1.1",
+      "path": "swashbuckle.aspnetcore.swaggergen/8.1.2",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -3780,14 +3780,14 @@
         "lib/netstandard2.0/Swashbuckle.AspNetCore.SwaggerGen.pdb",
         "lib/netstandard2.0/Swashbuckle.AspNetCore.SwaggerGen.xml",
         "package-readme.md",
-        "swashbuckle.aspnetcore.swaggergen.8.1.1.nupkg.sha512",
+        "swashbuckle.aspnetcore.swaggergen.8.1.2.nupkg.sha512",
         "swashbuckle.aspnetcore.swaggergen.nuspec"
       ]
     },
-    "Swashbuckle.AspNetCore.SwaggerUI/8.1.1": {
-      "sha512": "GDLX/MpK4oa2nYC1N/zN2UidQTtVKLPF6gkdEmGb0RITEwpJG9Gu8olKqPYnKqVeFn44JZoCS0M2LGRKXP8B/A==",
+    "Swashbuckle.AspNetCore.SwaggerUI/8.1.2": {
+      "sha512": "qsGf333N+sa2XmxqU287HZEP/W1OrPwk2DpXHb0fL2PhXj5fatUv50ExePJb7yiA6kpKLVpGReJD0tj2Kai1CA==",
       "type": "package",
-      "path": "swashbuckle.aspnetcore.swaggerui/8.1.1",
+      "path": "swashbuckle.aspnetcore.swaggerui/8.1.2",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -3801,7 +3801,7 @@
         "lib/netstandard2.0/Swashbuckle.AspNetCore.SwaggerUI.pdb",
         "lib/netstandard2.0/Swashbuckle.AspNetCore.SwaggerUI.xml",
         "package-readme.md",
-        "swashbuckle.aspnetcore.swaggerui.8.1.1.nupkg.sha512",
+        "swashbuckle.aspnetcore.swaggerui.8.1.2.nupkg.sha512",
         "swashbuckle.aspnetcore.swaggerui.nuspec"
       ]
     },
@@ -4840,29 +4840,36 @@
       "Microsoft.EntityFrameworkCore.SqlServer >= 9.0.4",
       "Microsoft.EntityFrameworkCore.Tools >= 9.0.4",
       "Swashbuckle.AspNetCore.Annotations >= 8.1.1",
-      "Swashbuckle.AspNetCore.SwaggerGen >= 8.1.1",
-      "Swashbuckle.AspNetCore.SwaggerUI >= 8.1.1"
+      "Swashbuckle.AspNetCore.SwaggerGen >= 8.1.2",
+      "Swashbuckle.AspNetCore.SwaggerUI >= 8.1.2"
     ]
   },
   "packageFolders": {
-    "/home/alcides/.nuget/packages/": {}
+    "C:\\Users\\alcides\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/alcides/Home/Development/WorkSpace/Senai-notes/API_Notes/API_Notes/API_Notes.csproj",
+      "projectUniqueName": "C:\\Users\\alcides\\Documents\\Home\\WorkStation\\Senai-notes\\API_Notes\\API_Notes\\API_Notes.csproj",
       "projectName": "API_Notes",
-      "projectPath": "/home/alcides/Home/Development/WorkSpace/Senai-notes/API_Notes/API_Notes/API_Notes.csproj",
-      "packagesPath": "/home/alcides/.nuget/packages/",
-      "outputPath": "/home/alcides/Home/Development/WorkSpace/Senai-notes/API_Notes/API_Notes/obj/",
+      "projectPath": "C:\\Users\\alcides\\Documents\\Home\\WorkStation\\Senai-notes\\API_Notes\\API_Notes\\API_Notes.csproj",
+      "packagesPath": "C:\\Users\\alcides\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\alcides\\Documents\\Home\\WorkStation\\Senai-notes\\API_Notes\\API_Notes\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
-        "/home/alcides/.nuget/NuGet/NuGet.Config"
+        "C:\\Users\\alcides\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net9.0"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -4917,11 +4924,11 @@
           },
           "Swashbuckle.AspNetCore.SwaggerGen": {
             "target": "Package",
-            "version": "[8.1.1, )"
+            "version": "[8.1.2, )"
           },
           "Swashbuckle.AspNetCore.SwaggerUI": {
             "target": "Package",
-            "version": "[8.1.1, )"
+            "version": "[8.1.2, )"
           }
         },
         "imports": [
@@ -4943,7 +4950,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/home/alcides/.dotnet/sdk/9.0.200/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.201/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

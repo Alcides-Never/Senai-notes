@@ -1,6 +1,38 @@
 [
   {
     "ContainingType": "API_Notes.Controllers.NotaController",
+    "Method": "ArquivarNota",
+    "RelativePath": "api/Nota/arquivarNota/{idNota}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "IdNota",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API_Notes.Controllers.NotaController",
+    "Method": "BuscarNota",
+    "RelativePath": "api/Nota/buscarNota/{idNota}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "idNota",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API_Notes.Controllers.NotaController",
     "Method": "CadastrarNota",
     "RelativePath": "api/Nota/cadastrarNota",
     "HttpMethod": "POST",
@@ -17,12 +49,251 @@
   },
   {
     "ContainingType": "API_Notes.Controllers.NotaController",
+    "Method": "PesquisarNota",
+    "RelativePath": "api/Nota/CampoPesquisa/{palavraPesquisada}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "palavraPesquisada",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API_Notes.Controllers.NotaController",
+    "Method": "CampoPesquisaArquivada",
+    "RelativePath": "api/Nota/CampoPesquisaArquivada/{palavraPesquisada}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "palavraPesquisada",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API_Notes.Controllers.NotaController",
+    "Method": "AtualizarNota",
+    "RelativePath": "api/Nota/editarNota/{idNota}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "idNota",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "nota",
+        "Type": "API_Notes.DTO.AtualizarNotaDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API_Notes.Controllers.NotaController",
+    "Method": "DeletarNota",
+    "RelativePath": "api/Nota/excluirNota/{idNota}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "idNota",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API_Notes.Controllers.NotaController",
     "Method": "ListarNotas",
-    "RelativePath": "api/Nota/listar",
+    "RelativePath": "api/Nota/listar/{idUsuario}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "idUsuario",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API_Notes.Controllers.NotaController",
+    "Method": "ListarTodosArquivado",
+    "RelativePath": "api/Nota/ListarTodosArquivado/{idUsuario}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "idUsuario",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API_Notes.Controllers.TagController",
+    "Method": "ListarTodos",
+    "RelativePath": "api/Tag/listartag/{userId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API_Notes.Controllers.TagController",
+    "Method": "BuscarTag",
+    "RelativePath": "api/Tag/RetornoTag",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "tagId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "userId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API_Notes.Controllers.UsuarioControllers",
+    "Method": "CadastrarUsuario",
+    "RelativePath": "api/UsuarioControllers/cadastrar",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "usuario",
+        "Type": "API_Notes.DTO.CadastrarUsuarioDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API_Notes.Controllers.UsuarioControllers",
+    "Method": "Delete",
+    "RelativePath": "api/UsuarioControllers/deletar/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API_Notes.Controllers.UsuarioControllers",
+    "Method": "Editar",
+    "RelativePath": "api/UsuarioControllers/editar/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "usuario",
+        "Type": "API_Notes.Models.Usuario",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API_Notes.Controllers.UsuarioControllers",
+    "Method": "ListarPorId",
+    "RelativePath": "api/UsuarioControllers/listar/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API_Notes.Controllers.UsuarioControllers",
+    "Method": "ListarTodos",
+    "RelativePath": "api/UsuarioControllers/ListarTodos",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API_Notes.Controllers.UsuarioControllers",
+    "Method": "Login",
+    "RelativePath": "api/UsuarioControllers/login",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "login",
+        "Type": "API_Notes.DTO.LoginDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API_Notes.Controllers.UsuarioControllers",
+    "Method": "BuscarPorNome",
+    "RelativePath": "Buscar/{nome}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "nome",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
     "ReturnTypes": []
   }
 ]

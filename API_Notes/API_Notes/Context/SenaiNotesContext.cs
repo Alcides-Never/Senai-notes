@@ -31,13 +31,11 @@ public partial class SenaiNotesContext : DbContext
     public virtual DbSet<Usuario> Usuarios { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-    /*    => optionsBuilder.UseSqlServer(
-            "Data Source=localhost, 1433;Initial Catalog=SENAI_NOTES;User Id=sa;Password=Senai@134;TrustServerCertificate=true;");*/
-
-     {
-         var con = _configuration.GetConnectionString("DefaultConnection");
-         optionsBuilder.UseSqlServer(con);
-     } 
+     
+    {
+        var con = _configuration.GetConnectionString("DefaultConnection");
+        optionsBuilder.UseSqlServer(con);
+    } 
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
