@@ -4,8 +4,13 @@ import PainelEsquerdo from '../../components/painel-esquerdo';
 import PainelSuperiorSettings from '../../components/painel-superior-settings';
 import PainelEsquerdoSettings from '../../components/painel-esquerdo-settings';
 import PainelTema from '../../components/painel-tema';
+import PainelChangePassword from '../../components/painel-change';
+
+import { useState } from 'react';
 
 function Settings() {
+
+    const [tela, setTela] = useState(null);
 
     return (
         <>
@@ -19,9 +24,20 @@ function Settings() {
 
                     <div className="painel-inferior">
 
-                        <PainelEsquerdoSettings />
+                        <PainelEsquerdoSettings enviarTelaSelecionada={tela => setTela(tela)} />
+                        
+                        {tela == "color-theme" && (
+                            <>
+                                <PainelTema />
+                            </>
+                        )}
 
-                        <PainelTema />
+                        {tela == "change-password" && (
+                            <>
+                                <PainelChangePassword />
+                            </>
+                        )}
+
 
                     </div>
 
