@@ -1,4 +1,5 @@
-﻿namespace API_Notes.DTO
+﻿
+namespace API_Notes.DTO
 {
     public class CadastrarUsuarioDTO
     {

@@ -9,6 +9,8 @@ namespace API_Notes.Interfaces
         List<ListarNotasViewModel> ListarTodos(int idUsuario);
         public BuscarNotaViewModel BuscarNota(int idNota);
         void CadastrarNota(CadastrarNotaDTO nota);
+
+        void CadastrarNotaSemImagem(CadastrarNotaSemImagemDTO nota);
      
         void AtualizarNota(int idNota, AtualizarNotaDTO nota);
 

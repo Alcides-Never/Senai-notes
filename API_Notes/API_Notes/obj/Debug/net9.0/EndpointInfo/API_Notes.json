@@ -33,26 +33,104 @@
         "tags": [
           "Nota"
         ],
+        "parameters": [
+          {
+            "name": "Titulo",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Conteudo",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "DataCriacao",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          {
+            "name": "ImgUrl",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Tags",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "IdUsuario",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "imagemAnotacao": {
+                    "type": "string",
+                    "format": "binary"
+                  }
+                }
+              },
+              "encoding": {
+                "imagemAnotacao": {
+                  "style": "form"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Nota/cadastrarNotaSemImagem": {
+      "post": {
+        "tags": [
+          "Nota"
+        ],
         "requestBody": {
           "content": {
             "application/json-patch+json": {
               "schema": {
-                "$ref": "#/components/schemas/CadastrarNotaDTO"
+                "$ref": "#/components/schemas/CadastrarNotaSemImagemDTO"
               }
             },
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/CadastrarNotaDTO"
+                "$ref": "#/components/schemas/CadastrarNotaSemImagemDTO"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/CadastrarNotaDTO"
+                "$ref": "#/components/schemas/CadastrarNotaSemImagemDTO"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/CadastrarNotaDTO"
+                "$ref": "#/components/schemas/CadastrarNotaSemImagemDTO"
               }
             }
           }
@@ -522,15 +600,8 @@
             "format": "date-time",
             "nullable": true
           },
-          "imgUrl": {
-            "type": "string",
-            "nullable": true
-          },
           "tags": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            },
+            "type": "string",
             "nullable": true
           },
           "idUsuario": {
@@ -540,7 +611,7 @@
         },
         "additionalProperties": false
       },
-      "CadastrarNotaDTO": {
+      "CadastrarNotaSemImagemDTO": {
         "type": "object",
         "properties": {
           "titulo": {
@@ -556,20 +627,13 @@
             "format": "date-time",
             "nullable": true
           },
-          "imgUrl": {
+          "tags": {
             "type": "string",
             "nullable": true
           },
           "idUsuario": {
             "type": "integer",
             "format": "int32"
-          },
-          "tags": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            },
-            "nullable": true
           }
         },
         "additionalProperties": false

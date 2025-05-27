@@ -40,8 +40,54 @@
     "Order": 0,
     "Parameters": [
       {
+        "Name": "Titulo",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Conteudo",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "DataCriacao",
+        "Type": "System.Nullable\u00601[[System.DateTime, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "ImgUrl",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Tags",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "IdUsuario",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "imagemAnotacao",
+        "Type": "Microsoft.AspNetCore.Http.IFormFile",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API_Notes.Controllers.NotaController",
+    "Method": "CadastrarNotaSemImagem",
+    "RelativePath": "api/Nota/cadastrarNotaSemImagem",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
         "Name": "not",
-        "Type": "API_Notes.DTO.CadastrarNotaDTO",
+        "Type": "API_Notes.DTO.CadastrarNotaSemImagemDTO",
         "IsRequired": true
       }
     ],

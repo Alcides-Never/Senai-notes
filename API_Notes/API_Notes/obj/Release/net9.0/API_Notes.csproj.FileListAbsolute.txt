@@ -171,7 +171,6 @@ C:\Users\FIC\Documents\Workstation\Senai-notes\API_Notes\API_Notes\bin\Release\n
 C:\Users\FIC\Documents\Workstation\Senai-notes\API_Notes\API_Notes\bin\Release\net9.0\Newtonsoft.Json.dll
 C:\Users\FIC\Documents\Workstation\Senai-notes\API_Notes\API_Notes\bin\Release\net9.0\Newtonsoft.Json.Bson.dll
 C:\Users\FIC\Documents\Workstation\Senai-notes\API_Notes\API_Notes\bin\Release\net9.0\Swashbuckle.AspNetCore.Annotations.dll
-C:\Users\alcides\Documents\Home\WorkStation\Senai-notes\API_Notes\API_Notes\bin\Release\net9.0\appsettings.Development.json
 C:\Users\alcides\Documents\Home\WorkStation\Senai-notes\API_Notes\API_Notes\bin\Release\net9.0\API_Notes.staticwebassets.endpoints.json
 C:\Users\alcides\Documents\Home\WorkStation\Senai-notes\API_Notes\API_Notes\bin\Release\net9.0\API_Notes.exe
 C:\Users\alcides\Documents\Home\WorkStation\Senai-notes\API_Notes\API_Notes\bin\Release\net9.0\API_Notes.deps.json

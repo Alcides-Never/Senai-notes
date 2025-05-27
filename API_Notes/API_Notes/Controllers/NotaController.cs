@@ -37,6 +37,7 @@ public class NotaController : Controller
             // 2 - Salvar o Arquivo
 
             // EXTRA - Criar um nome personalizado para o Arquivo
+
             var nomeArquivo = not.imagemAnotacao.FileName;
 
             var caminhoCompleto = Path.Combine(pastaDestino, nomeArquivo);
@@ -53,6 +54,15 @@ public class NotaController : Controller
 
         return Created("ok", not);
     }
+
+    [HttpPost("cadastrarNotaSemImagem")]
+
+    public IActionResult CadastrarNotaSemImagem(CadastrarNotaSemImagemDTO not)
+    {
+        _notaRepository.CadastrarNotaSemImagem(not);
+        return Created("ok", not);
+    }
+
 
     [HttpGet("buscarNota/{idNota}")]
     public IActionResult BuscarNota(int idNota)

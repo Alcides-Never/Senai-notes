@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using API_Notes.Models;
 using Microsoft.EntityFrameworkCore;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 namespace API_Notes.Context;
 
@@ -31,11 +30,10 @@ public partial class SenaiNotesContext : DbContext
     public virtual DbSet<Usuario> Usuarios { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-     
     {
         var con = _configuration.GetConnectionString("DefaultConnection");
         optionsBuilder.UseSqlServer(con);
-    } 
+    }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -63,10 +61,7 @@ public partial class SenaiNotesContext : DbContext
             entity.ToTable(tb => tb.HasTrigger("trg_audit_notas"));
 
             entity.Property(e => e.IdNotas).HasColumnName("Id_Notas");
-            entity.Property(e => e.Arquivada).HasDefaultValue(false);
-            entity.Property(e => e.Conteudo).HasColumnType("text");
             entity.Property(e => e.DataCriacao)
-                .HasDefaultValueSql("(getdate())")
                 .HasColumnType("datetime")
                 .HasColumnName("Data_Criacao");
             entity.Property(e => e.DataEdicao)
@@ -89,7 +84,7 @@ public partial class SenaiNotesContext : DbContext
         {
             entity.HasKey(e => e.IdNotasTag).HasName("PK__Notas_Ta__85E115E50ABD5B10");
 
-            entity.ToTable("Notas_Tag");
+            entity.ToTable("Notas_Tag", tb => tb.HasTrigger("trg_audit_notas_tag"));
 
             entity.Property(e => e.IdNotasTag).HasColumnName("Id_Notas_Tag");
             entity.Property(e => e.IdNotas).HasColumnName("Id_Notas");
@@ -131,7 +126,6 @@ public partial class SenaiNotesContext : DbContext
 
             entity.Property(e => e.IdUsuario).HasColumnName("Id_Usuario");
             entity.Property(e => e.DataCriacao)
-                .HasDefaultValueSql("(getdate())")
                 .HasColumnType("datetime")
                 .HasColumnName("Data_Criacao");
             entity.Property(e => e.Email)

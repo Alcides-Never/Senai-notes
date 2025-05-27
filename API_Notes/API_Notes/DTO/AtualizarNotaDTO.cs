@@ -8,12 +8,12 @@ public class AtualizarNotaDTO
     
     public DateTime? DataEdicao { get; set; }
     
-    public string? ImgUrl { get; set; }
+    //public string? ImgUrl { get; set; }
     
     //string
-    //public string? Tags { get; set; }
+    public string? Tags { get; set; }
 
-    public List<string> Tags { get; set; }
+    //public List<string> Tags { get; set; }
 
     // usuario
     public int IdUsuario { get; set; }

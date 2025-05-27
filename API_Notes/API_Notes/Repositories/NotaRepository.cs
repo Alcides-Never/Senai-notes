@@ -34,73 +34,134 @@ namespace API_Notes.Repositories
             _context.SaveChanges();
 
             // Tratativa Tag usando como entrada de Tags a string
-            /*      if (string.IsNullOrWhiteSpace(nota.Tags) == false)
-                  {
-                      var tratativaTag = nota.Tags.Split(',')
-                          .Select(a => a.Trim().ToLower())
-                          .Where(a => !string.IsNullOrWhiteSpace(a))
-                          .Distinct();
-
-                      foreach (var tagTexto in tratativaTag)
-                      {
-                          //verificar tag existente
-                          var tagExistente = _context.Tags.FirstOrDefault(t => t.Nome.ToLower() == tagTexto);
-
-                          // Cadastro
-                          if (tagExistente == null)
-                          {
-                              tagExistente = new Tag
-                              {
-                                  Nome = tagTexto,
-                                  IdUsuario = nota.IdUsuario
-                              };
-                              _context.Tags.Add(tagExistente);
-                              _context.SaveChanges();
-                          }
-
-                          // Relacao a tabela NotasTag
-                          var notaTag = new NotasTag
-                          {
-                              //IdNotas = nota.IdNotas,
-                              IdNotas = notaCadastrada.IdNotas,
-                              IdTag = tagExistente.IdTag,
-                          };
-                          _context.NotasTags.Add(notaTag);
-                      }
-
-                      _context.SaveChanges();
-                  } */
-
-            // Tratativa de tags usando a List
-            var tratativaTag = nota.Tags
-                .Select(a => a.ToLower())
-                .Distinct();
-
-            foreach (var tagTexto in tratativaTag)
+            if (string.IsNullOrWhiteSpace(nota.Tags) == false)
             {
-                var tagExistente = _context.Tags.FirstOrDefault(t => t.Nome == tagTexto);
+                var tratativaTag = nota.Tags.Split(',')
+                    .Select(a => a.Trim().ToLower())
+                    .Where(a => !string.IsNullOrWhiteSpace(a))
+                    .Distinct();
 
-                if (tagExistente == null)
+                foreach (var tagTexto in tratativaTag)
                 {
-                    tagExistente = new Tag
+                    //verificar tag existente
+                    var tagExistente = _context.Tags.FirstOrDefault(t => t.Nome.ToLower() == tagTexto);
+
+                    // Cadastro
+                    if (tagExistente == null)
                     {
-                        Nome = tagTexto,
-                        IdUsuario = nota.IdUsuario
+                        tagExistente = new Tag
+                        {
+                            Nome = tagTexto,
+                            IdUsuario = nota.IdUsuario
+                        };
+                        _context.Tags.Add(tagExistente);
+                        _context.SaveChanges();
+                    }
+
+                    // Relacao a tabela NotasTag
+                    var notaTag = new NotasTag
+                    {
+                        //IdNotas = nota.IdNotas,
+                        IdNotas = notaCadastrada.IdNotas,
+                        IdTag = tagExistente.IdTag,
                     };
-                    _context.Tags.Add(tagExistente);
-                    _context.SaveChanges();
+                    _context.NotasTags.Add(notaTag);
                 }
 
-                var notaTag = new NotasTag
-                {
-                    IdNotas = notaCadastrada.IdNotas,
-                    IdTag = tagExistente.IdTag
-                };
-                _context.NotasTags.Add(notaTag);
+                _context.SaveChanges();
             }
-
-            _context.SaveChanges();
         }
+
+
+
+        // Cadastrar Nota sem IMG e FormData
+        public void CadastrarNotaSemImagem(CadastrarNotaSemImagemDTO nota)
+        {
+            // Cadastro
+            Nota notaCadastrada = new Nota
+            {
+                Titulo = nota.Titulo,
+                Conteudo = nota.Conteudo,
+                DataCriacao = nota.DataCriacao,
+                Arquivada = false,
+                IdUsuario = nota.IdUsuario,
+                //ImgUrl = nota.ImgUrl
+            };
+
+            _context.Notas.Add(notaCadastrada);
+            _context.SaveChanges();
+
+            // Tratativa Tag usando como entrada de Tags a string
+            if (string.IsNullOrWhiteSpace(nota.Tags) == false)
+            {
+                var tratativaTag = nota.Tags.Split(',')
+                    .Select(a => a.Trim().ToLower())
+                    .Where(a => !string.IsNullOrWhiteSpace(a))
+                    .Distinct();
+
+                foreach (var tagTexto in tratativaTag)
+                {
+                    //verificar tag existente
+                    var tagExistente = _context.Tags.FirstOrDefault(t => t.Nome.ToLower() == tagTexto);
+
+                    // Cadastro
+                    if (tagExistente == null)
+                    {
+                        tagExistente = new Tag
+                        {
+                            Nome = tagTexto,
+                            IdUsuario = nota.IdUsuario
+                        };
+                        _context.Tags.Add(tagExistente);
+                        _context.SaveChanges();
+                    }
+
+                    // Relacao a tabela NotasTag
+                    var notaTag = new NotasTag
+                    {
+                        //IdNotas = nota.IdNotas,
+                        IdNotas = notaCadastrada.IdNotas,
+                        IdTag = tagExistente.IdTag,
+                    };
+                    _context.NotasTags.Add(notaTag);
+                }
+
+                _context.SaveChanges();
+            }
+        }
+
+
+        /*
+                    // Tratativa de tags usando a List
+                    var tratativaTag = nota.Tags
+                        .Select(a => a.ToLower())
+                        .Distinct();
+
+                    foreach (var tagTexto in tratativaTag)
+                    {
+                        var tagExistente = _context.Tags.FirstOrDefault(t => t.Nome == tagTexto);
+
+                        if (tagExistente == null)
+                        {
+                            tagExistente = new Tag
+                            {
+                                Nome = tagTexto,
+                                IdUsuario = nota.IdUsuario
+                            };
+                            _context.Tags.Add(tagExistente);
+                            _context.SaveChanges();
+                        }
+
+                        var notaTag = new NotasTag
+                        {
+                            IdNotas = notaCadastrada.IdNotas,
+                            IdTag = tagExistente.IdTag
+                        };
+                        _context.NotasTags.Add(notaTag);
+                    }
+
+                    _context.SaveChanges();
+                } */
 
         public List<ListarNotasViewModel> ListarTodos(int idUsuario)
         {
@@ -154,12 +215,12 @@ namespace API_Notes.Repositories
             notaEncontrada.Titulo = nota.Titulo;
             notaEncontrada.Conteudo = nota.Conteudo;
             notaEncontrada.DataEdicao = nota.DataEdicao;
-            notaEncontrada.ImgUrl = nota.ImgUrl;
+            //notaEncontrada.ImgUrl = nota.ImgUrl;
 
             _context.SaveChanges();
 
             // Tratativa Tag usando String nas Tags
-            /*   if (string.IsNullOrWhiteSpace(nota.Tags) == false)
+               if (string.IsNullOrWhiteSpace(nota.Tags) == false)
                {
                    // Coleta das novas Tags
                    var novasTags = nota.Tags
@@ -216,8 +277,11 @@ namespace API_Notes.Repositories
                    }
 
                    _context.SaveChanges();
-               }  */
+               }  
 
+
+            
+            /*
             // Tratativa das tags usando List
 
             // Novas Tags que eu recebi do front
@@ -276,7 +340,7 @@ namespace API_Notes.Repositories
             }
             _context.SaveChanges();
 
-
+            */
 
         }
 

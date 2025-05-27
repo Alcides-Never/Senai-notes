@@ -172,7 +172,6 @@
 /home/alcides/Home/Development/WorkSpace/Senai-notes/API_Notes/API_Notes/bin/Debug/net9.0/Newtonsoft.Json.dll
 /home/alcides/Home/Development/WorkSpace/Senai-notes/API_Notes/API_Notes/bin/Debug/net9.0/Newtonsoft.Json.Bson.dll
 /home/alcides/Home/Development/WorkSpace/Senai-notes/API_Notes/API_Notes/bin/Debug/net9.0/Swashbuckle.AspNetCore.Annotations.dll
-C:\Users\alcides\Documents\Home\WorkStation\Senai-notes\API_Notes\API_Notes\bin\Debug\net9.0\appsettings.Development.json
 C:\Users\alcides\Documents\Home\WorkStation\Senai-notes\API_Notes\API_Notes\bin\Debug\net9.0\API_Notes.staticwebassets.endpoints.json
 C:\Users\alcides\Documents\Home\WorkStation\Senai-notes\API_Notes\API_Notes\bin\Debug\net9.0\API_Notes.exe
 C:\Users\alcides\Documents\Home\WorkStation\Senai-notes\API_Notes\API_Notes\bin\Debug\net9.0\API_Notes.deps.json
@@ -339,7 +338,6 @@ C:\Users\alcides\Documents\Home\WorkStation\Senai-notes\API_Notes\API_Notes\obj\
 C:\Users\alcides\Documents\Home\WorkStation\Senai-notes\API_Notes\API_Notes\obj\Debug\net9.0\staticwebassets\msbuild.buildMultiTargeting.API_Notes.props
 C:\Users\alcides\Documents\Home\WorkStation\Senai-notes\API_Notes\API_Notes\obj\Debug\net9.0\staticwebassets\msbuild.buildTransitive.API_Notes.props
 C:\Users\alcides\Documents\Home\WorkStation\Senai-notes\API_Notes\API_Notes\obj\Debug\net9.0\staticwebassets.pack.json
-C:\Users\alcides\Documents\Home\WorkStation\Senai-notes\API_Notes\API_Notes\obj\Debug\net9.0\staticwebassets.upToDateCheck.txt
 C:\Users\alcides\Documents\Home\WorkStation\Senai-notes\API_Notes\API_Notes\obj\Debug\net9.0\API_Notes.csproj.Up2Date
 C:\Users\alcides\Documents\Home\WorkStation\Senai-notes\API_Notes\API_Notes\obj\Debug\net9.0\API_Notes.dll
 C:\Users\alcides\Documents\Home\WorkStation\Senai-notes\API_Notes\API_Notes\obj\Debug\net9.0\refint\API_Notes.dll
@@ -519,3 +517,4 @@ C:\Users\FIC\Documents\Workstation\Senai-notes\API_Notes\API_Notes\obj\Debug\net
 C:\Users\FIC\Documents\Workstation\Senai-notes\API_Notes\API_Notes\obj\Debug\net9.0\API_Notes.genruntimeconfig.cache
 C:\Users\FIC\Documents\Workstation\Senai-notes\API_Notes\API_Notes\obj\Debug\net9.0\ref\API_Notes.dll
 C:\Users\FIC\Documents\Workstation\Senai-notes\API_Notes\API_Notes\obj\Debug\net9.0\staticwebassets.upToDateCheck.txt
+C:\Users\alcides\Documents\Home\WorkStation\Senai-notes\API_Notes\API_Notes\obj\Debug\net9.0\staticwebassets.upToDateCheck.txt
