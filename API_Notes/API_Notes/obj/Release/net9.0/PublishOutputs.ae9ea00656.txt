@@ -1,6 +1,4 @@
 C:\Users\FIC\Documents\Workstation\Senai-notes\API_Notes\API_Notes\obj\Release\net9.0\PubTmp\Out\API_Notes.exe
-C:\Users\FIC\Documents\Workstation\Senai-notes\API_Notes\API_Notes\obj\Release\net9.0\PubTmp\Out\appsettings-azure.json
-C:\Users\FIC\Documents\Workstation\Senai-notes\API_Notes\API_Notes\obj\Release\net9.0\PubTmp\Out\appsettings.Development.json
 C:\Users\FIC\Documents\Workstation\Senai-notes\API_Notes\API_Notes\obj\Release\net9.0\PubTmp\Out\API_Notes.dll
 C:\Users\FIC\Documents\Workstation\Senai-notes\API_Notes\API_Notes\obj\Release\net9.0\PubTmp\Out\API_Notes.runtimeconfig.json
 C:\Users\FIC\Documents\Workstation\Senai-notes\API_Notes\API_Notes\obj\Release\net9.0\PubTmp\Out\API_Notes.pdb

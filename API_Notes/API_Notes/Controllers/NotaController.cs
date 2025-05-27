@@ -26,6 +26,29 @@ public class NotaController : Controller
     [HttpPost("cadastrarNota")]
     public IActionResult CadastrarNota(CadastrarNotaDTO not)
     {
+        if (not.imagemAnotacao != null)
+        {
+
+            // EXTRA - verifica se o arquivo é uma imagem
+
+            // 1 - Criar uma variável - Pasta de Destino / Onde as imagens serão salvas
+            var pastaDestino = Path.Combine(Directory.GetCurrentDirectory(), "Uploads");
+
+            // 2 - Salvar o Arquivo
+
+            // EXTRA - Criar um nome personalizado para o Arquivo
+            var nomeArquivo = not.imagemAnotacao.FileName;
+
+            var caminhoCompleto = Path.Combine(pastaDestino, nomeArquivo);
+
+            using (var stream = new FileStream(caminhoCompleto, FileMode.Create))
+            {
+                not.imagemAnotacao.CopyTo(stream);
+            }
+
+            // 3 - Guardar o local do arquivo no BD
+            not.ImgUrl = nomeArquivo;
+        }
         _notaRepository.CadastrarNota(not);
 
         return Created("ok", not);
@@ -47,8 +70,8 @@ public class NotaController : Controller
     [HttpDelete("excluirNota/{idNota}")]
     public IActionResult DeletarNota(int idNota)
     {
-            _notaRepository.DeletarNota(idNota);
-            return NoContent();
+        _notaRepository.DeletarNota(idNota);
+        return NoContent();
     }
 
     [HttpPut("arquivarNota/{idNota}")]
@@ -75,4 +98,4 @@ public class NotaController : Controller
     {
         return Ok(_notaRepository.ListarTodosArquivado(idUsuario));
     }
-}   
+}

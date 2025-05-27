@@ -6,6 +6,7 @@ using Azure.Identity;
 using System.Diagnostics.Tracing;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using Microsoft.Extensions.FileProviders;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -82,5 +83,19 @@ app.MapControllers();
 
 app.UseAuthentication();
 app.UseAuthorization();
+
+var pastaDestino = Path.Combine(Directory.GetCurrentDirectory(), "Uploads");
+
+if(!Directory.Exists(pastaDestino))
+    Directory.CreateDirectory(pastaDestino);
+
+app.UseStaticFiles(
+    new StaticFileOptions
+    {
+        FileProvider = new PhysicalFileProvider(pastaDestino),
+        RequestPath = "/image"
+    }
+    
+    );
 
 app.Run();
