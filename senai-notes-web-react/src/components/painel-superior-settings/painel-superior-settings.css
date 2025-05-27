@@ -44,3 +44,11 @@
     margin-right: 10px;
     margin-left: 10px;
 }
+
+/*********************** Darkmode *************************/
+
+body.dark-mode .superior h1 {
+    color: white;
+}
+
+/*********************** Darkmode *************************/

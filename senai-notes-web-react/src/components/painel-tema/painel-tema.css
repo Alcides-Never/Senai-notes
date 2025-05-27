@@ -28,3 +28,26 @@
     margin-bottom: 25px;
     margin-left: 45px;
 }
+
+/*********************** Darkmode *************************/
+
+body.dark-mode .configuracao {
+    background-color: black !important;
+}
+
+body.dark-mode .titulo-color {
+    color: white
+}
+
+body.dark-mode .descricao {
+    color: white;
+}
+
+body.dark-mode .botao-notes {
+    color: white;
+}
+
+body.dark-mode .icon {
+    color: white;
+}
+/*********************** Darkmode *************************/

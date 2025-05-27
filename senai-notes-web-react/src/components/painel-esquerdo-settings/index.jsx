@@ -11,7 +11,10 @@ function PainelEsquerdoSettings({ enviarTelaSelecionada }) {
 
     const clickLogout = () => {
 
-        localStorage.clear();
+        localStorage.removeItem('meuId');
+        localStorage.removeItem('meuToken');
+        localStorage.removeItem('nome');
+        localStorage.removeItem('dark-mode');
         window.location.href = "/login";
 
     }
@@ -36,6 +39,7 @@ function PainelEsquerdoSettings({ enviarTelaSelecionada }) {
                 <button className='botao-notes' onClick={() => clickChangePassword("change-password")} >
                     <FontAwesomeIcon icon={faLock} className='icon' />
                     Change Password
+                    <FontAwesomeIcon icon={faArrowRight} className='seta' />
                 </button>
 
                 <button className='botao-notes' onClick={() => clickLogout()}>

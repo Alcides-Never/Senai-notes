@@ -1,17 +1,32 @@
 import './login.css'
 import logo from '../../assets/img/logo.svg'
-import { useState } from 'react';
+import logoWhite from '../../assets/img/logo-white.svg';
+import { useEffect, useState } from 'react';
+import { ToastContainer, toast } from 'react-toastify';
 
 function Login() {
 
     const [email, setEmail] = useState("");
     const [senha, setSenha] = useState("");
+    const [flagDarkMode, setFlagDarkMode] = useState(false);
 
     const link = 'https://apisenainoteshomologacao.azurewebsites.net/'
 
+    useEffect(() => {
+
+        let modoEscuro = localStorage.getItem("dark-mode");
+        if (modoEscuro === "true") {
+            setFlagDarkMode(true);
+            document.body.classList.add("dark-mode");
+        } else {
+            setFlagDarkMode(false);
+            document.body.classList.remove("dark-mode");
+        }
+
+    }, []);
+
     const clickLogin = async () => {
 
-debugger
         let emailValid = validarEmail(email);
         console.log(emailValid);
 
@@ -20,7 +35,7 @@ debugger
         } else if (emailValid == false) {
             alert("Email inválido. Tente novamente");
         } else {
-            let response = await fetch(`${link}api/UsuarioControllers/login`, { 
+            let response = await fetch(`${link}api/UsuarioControllers/login`, {
                 headers: {
                     "content-Type": "application/json"
                 },
@@ -35,15 +50,20 @@ debugger
 
             if (response.ok == true) {
 
-                alert("Login realizado com sucesso");
-
                 let json = await response.json();
 
-                let userId = json.userId; 
+                let userId = json.usuario.idUsuario;
+                let token = json.token;
+                let nome = json.usuario.nome;
 
 
                 // GUARDAR INFORMAÇÃO NA PAGINA
                 localStorage.setItem("meuId", userId);
+                localStorage.setItem("meuToken", token);
+                localStorage.setItem("nome", nome);
+
+                // alert("Login realizado com sucesso. Seja Bem Vindo(a) " + nome);
+                toast.success("Login realizado com sucesso. Seja Bem Vindo(a) " + nome);
 
                 window.location.href = "/notes"
 
@@ -61,6 +81,15 @@ debugger
         }
     }
 
+    const onKeyUp = (event) => {
+
+        if (event.key == "Enter") {
+
+            clickLogin(senha);
+
+        }
+    }
+
     return (
         <>
 
@@ -70,7 +99,7 @@ debugger
 
                 <main className="page-container">
 
-                    <img src={logo} alt="Logo Senai Notes" />
+                    <img src={flagDarkMode == true ? logoWhite : logo} alt="Logo Senai Notes" />
 
                     <h1>Welcome to Notes</h1>
                     <p>Please log in to continue</p>
@@ -90,7 +119,7 @@ debugger
                             <a href='/forgot'> Forgot</a>
                         </div>
 
-                        <input className="inpt" value={senha} onChange={event => setSenha(event.target.value)} type="password" placeholder="Insira a senha" />
+                        <input onKeyUp={event => onKeyUp(event)} className="inpt" value={senha} onChange={event => setSenha(event.target.value)} type="password" placeholder="Insira a senha" />
 
                         <button className="btn" onClick={() => clickLogin()}>Entrar</button>
 

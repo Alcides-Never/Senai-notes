@@ -8,6 +8,8 @@ function Usuario() {
     const [email, setEmail] = useState("");
     const [senha, setSenha] = useState("");
 
+    const link = 'https://apisenainoteshomologacao.azurewebsites.net/'
+
     const clickSignUp = async () => {
 
         if (nome == "") {
@@ -33,18 +35,18 @@ function Usuario() {
         } else {
 
             let estruturaUser = {
-                nome: nome,
                 email: email,
-                senha: senha
+                senha: senha,
+                nome: nome,
+                dataCriacao: new Date().toISOString(),
+                tags: [" "]               
             };
 
-            let response = await fetch("http://localhost:3000/users", {
-
+            let response = await fetch(`${link}api/UsuarioControllers/cadastrar`, { 
+                method: "POST",
                 headers: {
-                    "Authorization": "Bearer " + localStorage.getItem("meuToken"),
                     "content-Type": "application/json"
                 },
-                method: "POST",
                 body: JSON.stringify({
                     estruturaUser
                 })

@@ -11,7 +11,7 @@ import imagemDescricao from "../../assets/img/imagem-Descricao.svg"
 function PainelInferiorCentro({ recebeNotaSelecionada }) {
 
     const [titulo, setTitulo] = useState("");
-    const [tags, setTags] = useState("");
+    const [tags, setTags] = useState([]);
     const [conteudo, setConteudo] = useState("");
     const [imagem, setImagemm] = useState(null);
     const [imagemURL, setImagemURL] = useState(null);
@@ -54,7 +54,10 @@ function PainelInferiorCentro({ recebeNotaSelecionada }) {
 
         const response = await fetch(`${link}api/Nota/editarNota/${recebeNotaSelecionada.idNotas}`, {
             method: "PUT",
-            headers: { "Content-Type": "application/json" },
+            headers: {
+                "Authorization": "Bearer " + localStorage.getItem("meuToken"),
+                "Content-Type": "application/json"
+            },
             body: JSON.stringify({
                 titulo,
                 conteudo,
@@ -112,6 +115,11 @@ function PainelInferiorCentro({ recebeNotaSelecionada }) {
 
     }
 
+    const clickCancel = () => {
+
+        window.location.href = "/notes"
+    }
+
     return (
         <>
             <nav className="inferior-centro">
@@ -156,7 +164,7 @@ function PainelInferiorCentro({ recebeNotaSelecionada }) {
                 <div className="area-botoes">
                     <button className='botao-save' onClick={() => clickSalvar()}> Salve Notes </button>
 
-                    <button className='botao-cancel'> Cancel </button>
+                    <button className='botao-cancel' onClick={() => clickCancel()}> Cancel </button>
 
                 </div>
 
@@ -169,7 +177,7 @@ function PainelInferiorCentro({ recebeNotaSelecionada }) {
 }
 
 function capitalizeFirstLetter(text) {
-    return text.charAt(0).toUpperCase() + text.slice(1);
+    //return text.charAt(0).toUpperCase() + text.slice(1);
 }
 
 export default PainelInferiorCentro

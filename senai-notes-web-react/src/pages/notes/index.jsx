@@ -5,8 +5,10 @@ import PainelSuperior from '../../components/painel-superior';
 import PainelInferiorEsquerda from '../../components/painel-inferior-esquerda';
 import PainelInferiorCentro from '../../components/painel-inferior-centro';
 import PainelInferiorDireita from '../../components/painel-inferior-direita';
-import { useState } from 'react';
+import PainelInferiorEsquerdaArchive from '../../components/painel-inferior-esquerda-archive';
 
+import { useEffect, useState } from 'react';
+import PainelSuperiorArchive from '../../components/painel-superior-archive';
 
 function Notes() {
 
@@ -15,21 +17,62 @@ function Notes() {
     const [tag, setTag] = useState(null);
     const [textoSelecionado, setTextoSelecionado] = useState(null);
 
+    const [flagDarkMode, setFlagDarkMode] = useState(false);
+    const [tela, setTela] = useState("All Notes");
+
+    useEffect(() => {
+
+        let modoEscuro = localStorage.getItem("dark-mode");
+        if (modoEscuro === "true") {
+            setFlagDarkMode(true);
+            document.body.classList.add("dark-mode");
+        } else {
+            setFlagDarkMode(false);
+            document.body.classList.remove("dark-mode");
+        }
+
+        console.log("tela", tela);
+
+    }, []);
+
     return (
         <>
             <div className="tela">
 
-                <PainelEsquerdo enviarTag={tag => setTag(tag)} />
+                <PainelEsquerdo enviarTag={tag => setTag(tag)}
+                    enviarTelaSelecionada={tela => setTela(tela)} />
 
                 <main className='notas-direita'>
 
-                    <PainelSuperior enviarTexto={texto => setTextoSelecionado(texto)} />
+                    {tela == null || tela == "All Notes" && (
+                        <>
+                            <PainelSuperior enviarTexto={texto => setTextoSelecionado(texto)} />
+                        </>
+                    )}
+
+                    {tela == "Archive" && (
+                        <>
+                            <PainelSuperiorArchive enviarTexto={texto => setTextoSelecionado(texto)} />
+                        </>
+                    )}
 
                     <div className="inferior">
 
-                        <PainelInferiorEsquerda enviarNotaSelecionada={note => setNoteSelecionada(note)}
-                            tagSelecionada={tag}
-                            enviarTextoPesquisa={textoSelecionado} />
+                        {tela == null || tela == "All Notes" && (
+                            <>
+                                <PainelInferiorEsquerda enviarNotaSelecionada={note => setNoteSelecionada(note)}
+                                    tagSelecionada={tag}
+                                    enviarTextoPesquisa={textoSelecionado} />
+                            </>
+                        )}
+
+                        {tela == "Archive" && (
+                            <>
+                                <PainelInferiorEsquerdaArchive enviarNotaSelecionada={note => setNoteSelecionada(note)}
+                                    tagSelecionada={tag}
+                                    enviarTextoPesquisa={textoSelecionado} />
+                            </>
+                        )}
 
                         {noteSelecionada != null && (
                             <>

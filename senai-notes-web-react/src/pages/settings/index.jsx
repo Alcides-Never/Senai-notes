@@ -25,7 +25,7 @@ function Settings() {
                     <div className="painel-inferior">
 
                         <PainelEsquerdoSettings enviarTelaSelecionada={tela => setTela(tela)} />
-                        
+
                         {tela == "color-theme" && (
                             <>
                                 <PainelTema />

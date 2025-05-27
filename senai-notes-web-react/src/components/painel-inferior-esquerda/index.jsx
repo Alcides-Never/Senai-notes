@@ -30,6 +30,7 @@ function PainelInferiorEsquerda({ enviarNotaSelecionada, tagSelecionada, enviarT
         let response = await fetch(`${link}/api/Nota/listar/` + userId, {
             method: "GET",
             headers: {
+                "Authorization": "Bearer " + localStorage.getItem("meuToken"),
                 "content-type": "application/json"
             }
         });
@@ -44,7 +45,7 @@ function PainelInferiorEsquerda({ enviarNotaSelecionada, tagSelecionada, enviarT
 
             }
 
-            if(enviarTextoPesquisa) {
+            if (enviarTextoPesquisa) {
                 json = json.filter(note => note.titulo.includes(enviarTextoPesquisa));
             }
 
@@ -59,20 +60,22 @@ function PainelInferiorEsquerda({ enviarNotaSelecionada, tagSelecionada, enviarT
     }
 
     const ClickCriarNote = async () => {
-
         let userId = localStorage.getItem("meuId");
 
         let estuturaNote = {
-            titulo: "Teste novo note",
+            titulo: "Nova Nota",
             conteudo: "Descricao nota",
             dataCriacao: new Date().toISOString(),
+            imgUrl: "",
             tags: "",
-            idUsuario: userId
+            idUsuario: userId,
+            imagemAnotacao: ""
         };
 
         let response = await fetch(`${link}api/Nota/cadastrarNota`, {
             method: "POST",
             headers: {
+                "Authorization": "Bearer " + localStorage.getItem("meuToken"),
                 "content-type": "application/json"
             },
             body: JSON.stringify(
@@ -85,6 +88,56 @@ function PainelInferiorEsquerda({ enviarNotaSelecionada, tagSelecionada, enviarT
         if (response.ok == true) {
             alert("Nova anotação criado com sucesso");
             await getNotas();
+        } else if (response.status == 401) {
+            alert("Token Inválido. Faça o login novamente");
+            localStorage.clear();
+            window.location.href = "/login";
+        } else {
+            alert("Nota não criada");
+        }
+
+    }
+
+    const ClickCriarNoteForm = async () => {
+
+        let userId = localStorage.getItem("meuId");
+        let formData = new FormData();
+
+        let estuturaNote = {
+            titulo: "Nova Nota",
+            conteudo: "Descricao nota",
+            dataCriacao: new Date().toISOString(),
+            imgUrl: "",
+            tags: "",
+            idUsuario: userId,
+            imagemAnotacao: ""
+        };
+
+        formData.append("titulo", titulo);
+        formData.append("conteudo", conteudo);
+        formData.append("dataCriacao", new Date().toISOString(),);
+        formData.append("imgUrl", "");
+        formData.append("tags", "");
+        formData.append("idUsuario", userId);
+        formData.append("imagemAnotacao", "");
+
+        const response = await fetch(`${link}api/Nota/cadastrarNota`, {
+            method: "POST",
+            headers: {
+                "Authorization": "Bearer " + localStorage.getItem("meuToken")
+            },
+            body: formData
+        });
+
+        console.log(response);
+
+        if (response.ok == true) {
+            alert("Nova anotação criado com sucesso");
+            await getNotas();
+        } else if (response.status == 401) {
+            alert("Token Inválido. Faça o login novamente");
+            localStorage.clear();
+            window.location.href = "/login";
         } else {
             alert("Nota não criada");
         }
@@ -104,7 +157,7 @@ function PainelInferiorEsquerda({ enviarNotaSelecionada, tagSelecionada, enviarT
                             <p>{note.titulo} </p>
                             <div className="tags-notas">
                                 {note.tags.map(tag => (
-                                    <p className='tag1'>{capitalizeFirstLetter(tag.nome)}</p> 
+                                    <p className='tag1'>{capitalizeFirstLetter(tag.nome)}</p>
                                     /*<p className='tag1'>{tags.map(tag => ({capitalizeFirstLetter(tag.nome)}))} </> */
                                 ))}
 

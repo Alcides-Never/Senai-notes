@@ -13,7 +13,7 @@
     font-family: Inter;
     font-weight: bold;
     width: 100%;
-     margin-bottom: 20px;
+    margin-bottom: 20px;
 }
 
 .box-senha .descricao {
@@ -56,3 +56,20 @@
     margin-left: 310px;
     margin-top: 20px;
 }
+
+/*********************** Darkmode *************************/
+
+body.dark-mode .titulo-change {
+    color: white
+}
+
+body.dark-mode .input-senha {
+    background-color: white;
+    margin-bottom: 10px;
+}
+
+body.dark-mode .descricao-p {
+    color: white
+}
+
+/*********************** Darkmode *************************/

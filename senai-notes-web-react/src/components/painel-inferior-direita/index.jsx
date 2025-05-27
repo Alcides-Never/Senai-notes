@@ -13,7 +13,10 @@ function PainelInferiorDireita({ deletarNotaSelecionada, arquivarNotaSelecionada
 
         const response = await fetch(`${link}api/Nota/excluirNota/${deletarNotaSelecionada.idNotas}`, {
             method: "DELETE",
-            headers: { "Content-Type": "application/json" }
+            headers: {
+                "Authorization": "Bearer " + localStorage.getItem("meuToken"),
+                "Content-Type": "application/json"
+            }
         });
 
         if (response.ok == true) {
@@ -25,11 +28,14 @@ function PainelInferiorDireita({ deletarNotaSelecionada, arquivarNotaSelecionada
         }
     }
 
-        const clickArchive = async () => {
+    const clickArchive = async () => {
 
         const response = await fetch(`${link}api/Nota/arquivarNota/${arquivarNotaSelecionada.idNotas}`, {
             method: "PUT",
-            headers: { "Content-Type": "application/json" }
+            headers: {
+                "Authorization": "Bearer " + localStorage.getItem("meuToken"),
+                "Content-Type": "application/json"
+            }
         });
 
         if (response.ok == true) {
@@ -41,12 +47,13 @@ function PainelInferiorDireita({ deletarNotaSelecionada, arquivarNotaSelecionada
         }
     }
 
+
     return (
         <>
             <nav className="inferior-direita">
 
-                <button className='botao-notes'>
-                    <FontAwesomeIcon icon={faArchive} className='icon' onClick={() => clickArchive()} />
+                <button className='botao-notes' onClick={() => clickArchive()}>
+                    <FontAwesomeIcon icon={faArchive} className='icon' />
                     Archive Notes
                 </button>
 

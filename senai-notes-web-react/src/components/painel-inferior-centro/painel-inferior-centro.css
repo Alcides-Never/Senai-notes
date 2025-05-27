@@ -105,3 +105,24 @@
     font-size: 15px;
     margin-right: 15px;
 }
+
+/*********************** Darkmode *************************/
+
+body.dark-mode .inferior-centro {
+    background-color: black;
+}
+
+body.dark-mode .inferior-centro .titulo {
+    background-color: black;
+    color: white;
+}
+
+body.dark-mode .detalhe {
+    background-color: black;
+
+}
+
+body.dark-mode .texto {
+    background-color: black;
+    color: white;
+}
