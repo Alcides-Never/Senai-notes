@@ -1,0 +1,75 @@
+.box-senha {
+    height: 45vh;
+    width: 30vw;
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    margin: 15px;
+    border: 1px solid #ccc;
+}
+
+.titulo-change {
+    font-size: 25px;
+    font-family: Inter;
+    font-weight: bold;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.box-senha .descricao {
+    width: 100%;
+    font-size: 12px;
+    font-family: Inter;
+    font-weight: bold;
+}
+
+.box-senha .descricao-p {
+    width: 100%;
+    font-size: 10px;
+    font-family: Inter;
+    font-weight: normal;
+    margin-bottom: 15px;
+}
+
+
+.input-senha {
+    margin-top: 0vh;
+    width: 400px;
+    height: 15px;
+    border-radius: 16px;
+    border: none;
+    color: black;
+    background-color: transparent;
+    padding: 12px;
+}
+
+.botao-change {
+    width: 15vh;
+    height: 2vw;
+    font-family: Inter;
+    font-size: 12px;
+    font-weight: normal;
+    border: none;
+    border-radius: 5px;
+    background-color: #335CFF;
+    color: #FFFFFF;
+    margin-left: 310px;
+    margin-top: 20px;
+}
+
+/*********************** Darkmode *************************/
+
+body.dark-mode .titulo-change {
+    color: white
+}
+
+body.dark-mode .input-senha {
+    background-color: white;
+    margin-bottom: 10px;
+}
+
+body.dark-mode .descricao-p {
+    color: white
+}
+
+/*********************** Darkmode *************************/

@@ -63,11 +63,19 @@
 .botao-notes {
     width: 100%;
     margin-top: 15px;
-    margin-right: 10px;
+    margin-right: 1px;
     border: none;
     background-color: transparent;
     display: flex;
     align-items: center;
     font-family: "Inter";
     font-size: 12px;
+
+}
+
+
+/*********************** Darkmode *************************/
+
+body.dark.mode .botao-notes {
+    color: white;
 }

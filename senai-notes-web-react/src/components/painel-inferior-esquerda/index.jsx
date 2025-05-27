@@ -7,6 +7,8 @@ function PainelInferiorEsquerda({ enviarNotaSelecionada, tagSelecionada, enviarT
 
     const [notes, setNotes] = useState([]);
 
+    const link = 'https://apisenainoteshomologacao.azurewebsites.net/'
+
 
     useEffect(() => {
 
@@ -18,16 +20,17 @@ function PainelInferiorEsquerda({ enviarNotaSelecionada, tagSelecionada, enviarT
 
         getNotas();
 
-    }, [tagSelecionada]);
+    }, [tagSelecionada, enviarTextoPesquisa]);
 
 
     const getNotas = async () => {
-debugger
+
         let userId = localStorage.getItem("meuId");
 
-        let response = await fetch("https://apisenainotesgrupo5temp.azurewebsites.net/api/Nota/listar/" + userId, {
+        let response = await fetch(`${link}/api/Nota/listar/` + userId, {
             method: "GET",
             headers: {
+                "Authorization": "Bearer " + localStorage.getItem("meuToken"),
                 "content-type": "application/json"
             }
         });
@@ -37,12 +40,13 @@ debugger
             let json = await response.json();
 
             if (tagSelecionada) {
-                json = json.filter(note => note.tags.map(tag => tag.nome));
+
+                json = json.filter(note => note.tags.map(tag => capitalizeFirstLetter(tag.nome)).includes(capitalizeFirstLetter(tagSelecionada.nome)));
 
             }
 
-            if(enviarTextoPesquisa) {
-                json = json.filter(note => note.startsWith(texto));
+            if (enviarTextoPesquisa) {
+                json = json.filter(note => note.titulo.includes(enviarTextoPesquisa));
             }
 
             setNotes(json);
@@ -56,20 +60,22 @@ debugger
     }
 
     const ClickCriarNote = async () => {
-
         let userId = localStorage.getItem("meuId");
 
         let estuturaNote = {
-            titulo: "Teste novo note",
+            titulo: "Nova Nota",
             conteudo: "Descricao nota",
             dataCriacao: new Date().toISOString(),
+            imgUrl: "",
             tags: "",
-            idUsuario: userId
+            idUsuario: userId,
+            imagemAnotacao: ""
         };
 
-        let response = await fetch("https://apisenainotesgrupo5temp.azurewebsites.net/api/Nota/cadastrarNota", {
+        let response = await fetch(`${link}api/Nota/cadastrarNota`, {
             method: "POST",
             headers: {
+                "Authorization": "Bearer " + localStorage.getItem("meuToken"),
                 "content-type": "application/json"
             },
             body: JSON.stringify(
@@ -82,6 +88,56 @@ debugger
         if (response.ok == true) {
             alert("Nova anotação criado com sucesso");
             await getNotas();
+        } else if (response.status == 401) {
+            alert("Token Inválido. Faça o login novamente");
+            localStorage.clear();
+            window.location.href = "/login";
+        } else {
+            alert("Nota não criada");
+        }
+
+    }
+
+    const ClickCriarNoteForm = async () => {
+
+        let userId = localStorage.getItem("meuId");
+        let formData = new FormData();
+
+        let estuturaNote = {
+            titulo: "Nova Nota",
+            conteudo: "Descricao nota",
+            dataCriacao: new Date().toISOString(),
+            imgUrl: "",
+            tags: "",
+            idUsuario: userId,
+            imagemAnotacao: ""
+        };
+
+        formData.append("titulo", titulo);
+        formData.append("conteudo", conteudo);
+        formData.append("dataCriacao", new Date().toISOString(),);
+        formData.append("imgUrl", "");
+        formData.append("tags", "");
+        formData.append("idUsuario", userId);
+        formData.append("imagemAnotacao", "");
+
+        const response = await fetch(`${link}api/Nota/cadastrarNota`, {
+            method: "POST",
+            headers: {
+                "Authorization": "Bearer " + localStorage.getItem("meuToken")
+            },
+            body: formData
+        });
+
+        console.log(response);
+
+        if (response.ok == true) {
+            alert("Nova anotação criado com sucesso");
+            await getNotas();
+        } else if (response.status == 401) {
+            alert("Token Inválido. Faça o login novamente");
+            localStorage.clear();
+            window.location.href = "/login";
         } else {
             alert("Nota não criada");
         }
@@ -101,7 +157,8 @@ debugger
                             <p>{note.titulo} </p>
                             <div className="tags-notas">
                                 {note.tags.map(tag => (
-                                    <p className='tag1'>{tag.nome}</p>
+                                    <p className='tag1'>{capitalizeFirstLetter(tag.nome)}</p>
+                                    /*<p className='tag1'>{tags.map(tag => ({capitalizeFirstLetter(tag.nome)}))} </> */
                                 ))}
 
                             </div>
@@ -118,5 +175,10 @@ debugger
         </>
     )
 }
+
+function capitalizeFirstLetter(text) {
+    return text.charAt(0).toUpperCase() + text.slice(1);
+}
+
 
 export default PainelInferiorEsquerda

@@ -16,3 +16,19 @@
     margin-left: auto;
     margin-right: 10px;
 }
+
+/*********************** Darkmode *************************/
+
+body.dark.mode .inferior-esquerda-settings {
+    background-color: black !important;
+}
+
+body.dark.mode .botao-notes {
+    color: white;
+}
+
+body.dark.mode .icon {
+    color: white;
+}
+
+/*********************** Darkmode *************************/

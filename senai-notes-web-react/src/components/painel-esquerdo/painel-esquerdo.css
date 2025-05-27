@@ -1,5 +1,5 @@
 .notas-esquerda {
-    /* background-color: rgb(196, 191, 191); */
+    background-color: transparent;
     width: 15vw;
     height: 100vh;
     border-right: 1px solid #ccc;
@@ -34,3 +34,11 @@
     font-size: 15px;
     color: #717784
 }
+
+/*********************** Darkmode *************************/
+
+body.dark-mode .notas-esquerda{
+    background-color: black !important;
+}
+
+/*********************** Darkmode *************************/

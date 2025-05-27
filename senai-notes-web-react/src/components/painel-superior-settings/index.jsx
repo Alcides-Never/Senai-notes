@@ -15,7 +15,6 @@ function PainelSuperiorSettings() {
                     <input className="input" type="text" placeholder="Search by title, content or tags..." />
 
                     <FontAwesomeIcon icon={faGear} className='icon' />
-                    <FontAwesomeIcon icon={faUser} className='icon' />
 
                 </div>
 

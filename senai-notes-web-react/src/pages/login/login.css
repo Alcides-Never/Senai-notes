@@ -25,8 +25,10 @@
 }
 
 .page-container {
-    width: 30vw; /* estava 23 */
-    height: 70vh; /* estava 55 */
+    width: 30vw;
+    /* estava 23 */
+    height: 70vh;
+    /* estava 55 */
     border: 1px solid gray;
     border-radius: 10px;
     padding: 20px;
@@ -48,7 +50,8 @@
     font-family: Inter;
     font-weight: bold;
     font-size: 15px;
-    margin-top: 35px; /* aqui */
+    margin-top: 35px;
+    /* aqui */
 }
 
 /* .label p {
@@ -73,3 +76,23 @@
     font-size: 14px;
     font-family: Inter;
 }
+
+/*********************** Darkmode *************************/
+
+body.dark-mode .borda-login {
+    background-color: black !important;
+}
+
+body.dark-mode .page-container h1 {
+    color: white;
+}
+
+body.dark-mode .page-container p {
+    color: white;
+}
+
+body.dark-mode .link {
+    color: white;
+}
+
+/*********************** Darkmode *************************/

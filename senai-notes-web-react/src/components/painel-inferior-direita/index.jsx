@@ -5,14 +5,18 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArchive, faTrashCan } from '@fortawesome/free-solid-svg-icons';
 
 
-function PainelInferiorDireita({deletarNotaSelecionada}) {
+function PainelInferiorDireita({ deletarNotaSelecionada, arquivarNotaSelecionada }) {
 
-       const clickDelete = async () => {
+    const link = 'https://apisenainoteshomologacao.azurewebsites.net/'
 
-        debugger
-        const response = await fetch(`https://apisenainotesgrupo5temp.azurewebsites.net/api/Nota/excluirNota/${deletarNotaSelecionada.idNotas}`, {
+    const clickDelete = async () => {
+
+        const response = await fetch(`${link}api/Nota/excluirNota/${deletarNotaSelecionada.idNotas}`, {
             method: "DELETE",
-            headers: { "Content-Type": "application/json" }
+            headers: {
+                "Authorization": "Bearer " + localStorage.getItem("meuToken"),
+                "Content-Type": "application/json"
+            }
         });
 
         if (response.ok == true) {
@@ -24,16 +28,36 @@ function PainelInferiorDireita({deletarNotaSelecionada}) {
         }
     }
 
+    const clickArchive = async () => {
+
+        const response = await fetch(`${link}api/Nota/arquivarNota/${arquivarNotaSelecionada.idNotas}`, {
+            method: "PUT",
+            headers: {
+                "Authorization": "Bearer " + localStorage.getItem("meuToken"),
+                "Content-Type": "application/json"
+            }
+        });
+
+        if (response.ok == true) {
+            alert("Anotação arquivada com sucesso");
+            window.location.reload()
+
+        } else {
+            alert("Erro ao arquivar a nota");
+        }
+    }
+
+
     return (
         <>
             <nav className="inferior-direita">
 
-                <button className='botao-notes'>
+                <button className='botao-notes' onClick={() => clickArchive()}>
                     <FontAwesomeIcon icon={faArchive} className='icon' />
                     Archive Notes
                 </button>
 
-                <button className='botao-notes' onClick={() => clickDelete()}> 
+                <button className='botao-notes' onClick={() => clickDelete()}>
                     <FontAwesomeIcon icon={faTrashCan} className='icon' />
                     Delete Notes
                 </button>
