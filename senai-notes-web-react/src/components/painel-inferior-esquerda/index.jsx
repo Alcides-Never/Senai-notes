@@ -7,6 +7,8 @@ function PainelInferiorEsquerda({ enviarNotaSelecionada, tagSelecionada, enviarT
 
     const [notes, setNotes] = useState([]);
 
+    const link = 'https://apisenainoteshomologacao.azurewebsites.net/'
+
 
     useEffect(() => {
 
@@ -25,7 +27,7 @@ function PainelInferiorEsquerda({ enviarNotaSelecionada, tagSelecionada, enviarT
 
         let userId = localStorage.getItem("meuId");
 
-        let response = await fetch("https://apisenainotesgrupo5temp.azurewebsites.net/api/Nota/listar/" + userId, {
+        let response = await fetch(`${link}/api/Nota/listar/` + userId, {
             method: "GET",
             headers: {
                 "content-type": "application/json"
@@ -68,7 +70,7 @@ function PainelInferiorEsquerda({ enviarNotaSelecionada, tagSelecionada, enviarT
             idUsuario: userId
         };
 
-        let response = await fetch("https://apisenainotesgrupo5temp.azurewebsites.net/api/Nota/cadastrarNota", {
+        let response = await fetch(`${link}api/Nota/cadastrarNota`, {
             method: "POST",
             headers: {
                 "content-type": "application/json"
@@ -102,7 +104,8 @@ function PainelInferiorEsquerda({ enviarNotaSelecionada, tagSelecionada, enviarT
                             <p>{note.titulo} </p>
                             <div className="tags-notas">
                                 {note.tags.map(tag => (
-                                    <p className='tag1'>{capitalizeFirstLetter(tag.nome)}</p>
+                                    <p className='tag1'>{capitalizeFirstLetter(tag.nome)}</p> 
+                                    /*<p className='tag1'>{tags.map(tag => ({capitalizeFirstLetter(tag.nome)}))} </> */
                                 ))}
 
                             </div>

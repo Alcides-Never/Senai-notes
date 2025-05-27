@@ -9,6 +9,15 @@
     background-image: url("../../assets/img/Imagem-Descricao.svg");
     background-size: cover;
     height: 25vh;
+    display: block;
+}
+
+.file-input {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 0px;
+    height: 0px;
 }
 
 .titulo {

@@ -5,12 +5,18 @@ import { faTags } from '@fortawesome/free-solid-svg-icons';
 import { faClock } from '@fortawesome/free-regular-svg-icons';
 import { useEffect, useState } from 'react';
 
+import imagemDescricao from "../../assets/img/imagem-Descricao.svg"
+
 
 function PainelInferiorCentro({ recebeNotaSelecionada }) {
 
     const [titulo, setTitulo] = useState("");
     const [tags, setTags] = useState("");
     const [conteudo, setConteudo] = useState("");
+    const [imagem, setImagemm] = useState(null);
+    const [imagemURL, setImagemURL] = useState(null);
+
+    const link = 'https://apisenainoteshomologacao.azurewebsites.net/'
 
 
     useEffect(() => {
@@ -18,14 +24,14 @@ function PainelInferiorCentro({ recebeNotaSelecionada }) {
             setTitulo(recebeNotaSelecionada.titulo);
             setTags(recebeNotaSelecionada.tags.map(tag => tag.nome).join(", "));
 
-            getConteudoNota();         
+            getConteudoNota();
         }
     }, [recebeNotaSelecionada]);
 
 
     const getConteudoNota = async () => {
 
-        let response = await fetch(`https://apisenainotesgrupo5temp.azurewebsites.net/api/Nota/buscarNota/${recebeNotaSelecionada.idNotas}`, {
+        let response = await fetch(`${link}api/Nota/buscarNota/${recebeNotaSelecionada.idNotas}`, {
             method: "GET",
             headers: {
                 "content-type": "application/json"
@@ -46,7 +52,7 @@ function PainelInferiorCentro({ recebeNotaSelecionada }) {
 
         let userId = localStorage.getItem("meuId");
 
-        const response = await fetch(`https://apisenainotesgrupo5temp.azurewebsites.net/api/Nota/editarNota/${recebeNotaSelecionada.idNotas}`, {
+        const response = await fetch(`${link}api/Nota/editarNota/${recebeNotaSelecionada.idNotas}`, {
             method: "PUT",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
@@ -68,11 +74,53 @@ function PainelInferiorCentro({ recebeNotaSelecionada }) {
         }
     }
 
+    const clickSalvarImg = async () => {  /*Exemplo de estutura para enviar imagem */
+
+        let userId = localStorage.getItem("meuId");
+
+        let formData = new formData();
+
+        formData.append("titulo", titulo);
+        formData.append("conteudo", conteudo);
+        formData.append("dataEdicao", new Date().toISOString(),);
+        formData.append("imgUrl", imagem);
+        formData.append("tags", tags);
+        formData.append("idUsuario", userId);
+
+        const response = await fetch(`${link}api/Nota/editarNota/${recebeNotaSelecionada.idNotas}`, {
+            method: "PUT",
+            body: formData
+        });
+
+        if (response.ok == true) {
+            alert("Anotação atualizada com sucesso");
+            window.location.reload()
+
+        } else {
+            alert("Erro ao atualizar nota");
+        }
+    }
+
+    const adicionarImagem = (event) => {
+
+        const arquivo = event.target.files[0];
+
+        console.log("arquivo", arquivo);
+
+        setImagemm(arquivo);
+        setImagemURL(URL.createObjectURL(arquivo));
+
+    }
+
     return (
         <>
             <nav className="inferior-centro">
 
-                <div className="imagem"></div>
+                <label className="imagem" style={{ backgroundImage: `url('${imagemURL || imagemDescricao}')` }}>
+
+                    <input onChange={event => adicionarImagem(event)} type='file' className='file-input' />
+
+                </label>
 
                 <input type="text" className='titulo' placeholder='Insira o titulo da nota' value={titulo} onChange={event => setTitulo(event.target.value)} />
 
@@ -81,7 +129,7 @@ function PainelInferiorCentro({ recebeNotaSelecionada }) {
                         <FontAwesomeIcon icon={faTags} className='icon' />
                         Tags
                     </p>
-                    <input type="text" className='tag-descricao' value={tags} onChange={event => setTags(event.target.value)} />
+                    <input type="text" className='tag-descricao' value={capitalizeFirstLetter(tags)} onChange={event => setTags(event.target.value)} />
                 </div>
 
                 <div className="inf-descricao">
@@ -118,6 +166,10 @@ function PainelInferiorCentro({ recebeNotaSelecionada }) {
 
         </>
     )
+}
+
+function capitalizeFirstLetter(text) {
+    return text.charAt(0).toUpperCase() + text.slice(1);
 }
 
 export default PainelInferiorCentro

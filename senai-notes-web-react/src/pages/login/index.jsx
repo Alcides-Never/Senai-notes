@@ -7,9 +7,11 @@ function Login() {
     const [email, setEmail] = useState("");
     const [senha, setSenha] = useState("");
 
+    const link = 'https://apisenainoteshomologacao.azurewebsites.net/'
+
     const clickLogin = async () => {
 
-
+debugger
         let emailValid = validarEmail(email);
         console.log(emailValid);
 
@@ -18,8 +20,7 @@ function Login() {
         } else if (emailValid == false) {
             alert("Email inválido. Tente novamente");
         } else {
-            let response = await fetch("http://localhost:3000/users", {
-
+            let response = await fetch(`${link}api/UsuarioControllers/login`, { 
                 headers: {
                     "content-Type": "application/json"
                 },
@@ -38,15 +39,13 @@ function Login() {
 
                 let json = await response.json();
 
-                let token = json.token;
-                let userId = 1; /*codigo fixo para teste - json.userId; */
+                let userId = json.userId; 
 
 
                 // GUARDAR INFORMAÇÃO NA PAGINA
-                localStorage.setItem("meuToken", token);
                 localStorage.setItem("meuId", userId);
 
-                 window.location.href = "/notes"
+                window.location.href = "/notes"
 
             } else {
 

@@ -3,12 +3,11 @@ import './painel-esquerdo-settings.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faRightFromBracket } from '@fortawesome/free-solid-svg-icons/faRightFromBracket';
 import { faArrowRight, faCircleHalfStroke, faLock } from '@fortawesome/free-solid-svg-icons';
-import { useState } from 'react';
+
 
 
 function PainelEsquerdoSettings({ enviarTelaSelecionada }) {
 
-    const [tela, setTela] = useState(null);
 
     const clickLogout = () => {
 

@@ -9,9 +9,11 @@ import { faArrowRight } from '@fortawesome/free-solid-svg-icons/faArrowRight';
 import { useEffect, useState } from 'react';
 
 
-function PainelEsquerdo({ enviarTag}) {
+function PainelEsquerdo({ enviarTag }) {
 
     const [tags, setTags] = useState([]);
+
+    const link = 'https://apisenainoteshomologacao.azurewebsites.net/'
 
     useEffect(() => {
 
@@ -21,7 +23,14 @@ function PainelEsquerdo({ enviarTag}) {
 
     const getTags = async () => {
 
-        let response = await fetch("http://localhost:3000/tags")
+        let userId = localStorage.getItem("meuId");
+
+        let response = await fetch(`${link}/api/Tag/listartag/` + userId, {
+            method: "GET",
+            headers: {
+                "content-type": "application/json"
+            }
+        });
 
 
         if (response.ok == true) {
@@ -45,7 +54,7 @@ function PainelEsquerdo({ enviarTag}) {
 
     }
 
-    
+
     return (
         <>
             <nav className='notas-esquerda'>
@@ -69,7 +78,7 @@ function PainelEsquerdo({ enviarTag}) {
                     {tags.map(tag => (
                         <button className='botao-notes' onClick={() => clickTag(tag)}>
                             <FontAwesomeIcon icon={faTag} className='icon' />
-                            {tag.nome}
+                            {capitalizeFirstLetter(tag.nome)}
                         </button>
 
                     ))}
@@ -80,6 +89,10 @@ function PainelEsquerdo({ enviarTag}) {
 
         </>
     )
+}
+
+function capitalizeFirstLetter(text) {
+    return text.charAt(0).toUpperCase() + text.slice(1);
 }
 
 export default PainelEsquerdo;

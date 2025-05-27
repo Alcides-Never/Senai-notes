@@ -7,9 +7,11 @@ import { faArchive, faTrashCan } from '@fortawesome/free-solid-svg-icons';
 
 function PainelInferiorDireita({ deletarNotaSelecionada, arquivarNotaSelecionada }) {
 
+    const link = 'https://apisenainoteshomologacao.azurewebsites.net/'
+
     const clickDelete = async () => {
 
-        const response = await fetch(`https://apisenainotesgrupo5temp.azurewebsites.net/api/Nota/excluirNota/${deletarNotaSelecionada.idNotas}`, {
+        const response = await fetch(`${link}api/Nota/excluirNota/${deletarNotaSelecionada.idNotas}`, {
             method: "DELETE",
             headers: { "Content-Type": "application/json" }
         });
@@ -25,7 +27,7 @@ function PainelInferiorDireita({ deletarNotaSelecionada, arquivarNotaSelecionada
 
         const clickArchive = async () => {
 
-        const response = await fetch(`https://apisenainotesgrupo5temp.azurewebsites.net/api/Nota/arquivarNota/${arquivarNotaSelecionada.idNotas}`, {
+        const response = await fetch(`${link}api/Nota/arquivarNota/${arquivarNotaSelecionada.idNotas}`, {
             method: "PUT",
             headers: { "Content-Type": "application/json" }
         });
