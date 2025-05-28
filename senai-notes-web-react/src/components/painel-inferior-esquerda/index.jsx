@@ -1,6 +1,7 @@
 import './painel-inferior-esquerda.css';
 
-import imgNote from '../../assets/img/Image-notes.svg'
+//import imgNote from '../../assets/img/Image-notes.svg'
+import imgNote from '../../assets/img/Note.png'
 import { useEffect, useState } from 'react';
 
 function PainelInferiorEsquerda({ enviarNotaSelecionada, tagSelecionada, enviarTextoPesquisa }) {
