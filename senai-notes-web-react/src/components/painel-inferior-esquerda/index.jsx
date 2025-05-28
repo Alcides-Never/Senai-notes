@@ -64,9 +64,11 @@ function PainelInferiorEsquerda({ enviarNotaSelecionada, tagSelecionada, enviarT
     const ClickCriarNote = async () => {
         let userId = localStorage.getItem("meuId");
 
+        let tituloNota = prompt("Digite o nome da nota");
+
         let estuturaNote = {
-            titulo: "Nova Nota",
-            conteudo: "Descricao nota",
+            titulo: tituloNota,
+            conteudo: "",
             dataCriacao: new Date().toISOString(),
             imgUrl: "",
             tags: "",
@@ -74,7 +76,7 @@ function PainelInferiorEsquerda({ enviarNotaSelecionada, tagSelecionada, enviarT
             imagemAnotacao: ""
         };
 
-        let response = await fetch(`${link}api/Nota/cadastrarNota`, {
+        let response = await fetch(`${link}api/Nota/cadastrarNotaSemImagem`, {
         //let response = await fetch(`${link}buscarNota`, {
             method: "POST",
             headers: {

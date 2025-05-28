@@ -40,7 +40,7 @@ function Usuario() {
                 senha: senha,
                 nome: nome,
                 dataCriacao: new Date().toISOString(),
-                tags: [" "]               
+                tags: [""]               
             };
 
             let response = await fetch(`${link}api/UsuarioControllers/cadastrar`, {  

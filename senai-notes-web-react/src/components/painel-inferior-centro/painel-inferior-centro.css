@@ -6,9 +6,9 @@
 }
 
 .imagem {
-    background-image: url("../../assets/img/Imagem-Descricao.svg");
+    background-image: url("../../assets/img/Imagem-Anotacao.png");
     background-size: cover;
-    height: 25vh;
+    height: 35vh;
     display: block;
 }
 

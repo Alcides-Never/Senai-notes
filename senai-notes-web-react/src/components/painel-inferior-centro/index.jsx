@@ -5,7 +5,8 @@ import { faTags } from '@fortawesome/free-solid-svg-icons';
 import { faClock } from '@fortawesome/free-regular-svg-icons';
 import { useEffect, useState } from 'react';
 
-import imagemDescricao from "../../assets/img/imagem-Descricao.svg"
+//import imagemDescricao from "../../assets/img/imagem-Descricao.svg"
+import imagemDescricao from "../../assets/img/imagem-Anotacao.png"
 
 
 function PainelInferiorCentro({ recebeNotaSelecionada }) {
@@ -23,7 +24,7 @@ function PainelInferiorCentro({ recebeNotaSelecionada }) {
         debugger
         if (recebeNotaSelecionada) {
             setTitulo(recebeNotaSelecionada.titulo);
-            setTags(recebeNotaSelecionada.tags.map(tag => tag.nome).join(", "));
+            setTags(recebeNotaSelecionada.tags.map(tag => capitalizeFirstLetter(tag.nome)).join(", "));
 
             getConteudoNota();
         }
@@ -141,7 +142,7 @@ function PainelInferiorCentro({ recebeNotaSelecionada }) {
                         <FontAwesomeIcon icon={faTags} className='icon' />
                         Tags
                     </p>
-                    <input type="text" className='tag-descricao' value={capitalizeFirstLetter(tags)} onChange={event => setTags(event.target.value)} />
+                    <input type="text" className='tag-descricao' value={tags} onChange={event => setTags(event.target.value)} />
                 </div>
 
                 <div className="inf-descricao">
@@ -181,7 +182,7 @@ function PainelInferiorCentro({ recebeNotaSelecionada }) {
 }
 
 function capitalizeFirstLetter(text) {
-    //return text.charAt(0).toUpperCase() + text.slice(1);
+    return text.charAt(0).toUpperCase() + text.slice(1);
 }
 
 export default PainelInferiorCentro

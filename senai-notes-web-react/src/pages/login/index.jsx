@@ -68,8 +68,7 @@ function Login() {
                 localStorage.setItem("meuToken", token);
                 localStorage.setItem("nome", nome);
 
-                // alert("Login realizado com sucesso. Seja Bem Vindo(a) " + nome); 
-                toast.success("Login realizado com sucesso. Seja Bem Vindo(a) " + nome);
+                alert("Login realizado com sucesso. Seja Bem Vindo(a) " + nome); 
 
                 window.location.href = "/notes"
 
