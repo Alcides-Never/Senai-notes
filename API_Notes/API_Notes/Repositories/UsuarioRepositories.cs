@@ -19,7 +19,6 @@ namespace API_Notes.Repositories
             _context = context;
         }
 
-
         void IUsuarioRepositories.Atualizar(int id, Usuario usuarioNovo)
         {
             Usuario usuarioEncontrado = _context.Usuarios.FirstOrDefault(a => a.IdUsuario == id);

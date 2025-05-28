@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using API_Notes.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
 
 namespace API_Notes.Context;
 
@@ -14,7 +15,8 @@ public partial class SenaiNotesContext : DbContext
     private IConfiguration _configuration;
 
     public SenaiNotesContext(DbContextOptions<SenaiNotesContext> options, IConfiguration config)
-        : base(options)
+    : base(options)
+
     {
         _configuration = config;
     }
@@ -30,6 +32,7 @@ public partial class SenaiNotesContext : DbContext
     public virtual DbSet<Usuario> Usuarios { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+     
     {
         var con = _configuration.GetConnectionString("DefaultConnection");
         optionsBuilder.UseSqlServer(con);
