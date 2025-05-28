@@ -31,8 +31,6 @@ function Notes() {
             document.body.classList.remove("dark-mode");
         }
 
-        console.log("tela", tela);
-
     }, []);
 
     return (

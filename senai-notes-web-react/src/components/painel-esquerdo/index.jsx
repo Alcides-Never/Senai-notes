@@ -10,12 +10,12 @@ import { faArrowRight } from '@fortawesome/free-solid-svg-icons/faArrowRight';
 import { useEffect, useState } from 'react';
 
 
-function PainelEsquerdo({ enviarTag, enviarTelaSelecionada,enviarNotaSelecionada }) {
+function PainelEsquerdo({ enviarTag, enviarTelaSelecionada, enviarNotaSelecionada }) {
 
     const [tags, setTags] = useState([]);
     const [flagDarkMode, setFlagDarkMode] = useState(false);
 
-    const link = 'https://apisenainoteshomologacao.azurewebsites.net/' 
+    const link = 'https://apisenainoteshomologacao.azurewebsites.net/'
     //const link = 'http://localhost:3000/'
 
     useEffect(() => {
@@ -34,8 +34,8 @@ function PainelEsquerdo({ enviarTag, enviarTelaSelecionada,enviarNotaSelecionada
 
         let userId = localStorage.getItem("meuId");
 
-        let response = await fetch(`${link}api/Tag/listartag/` + userId, { 
-        //let response = await fetch(`${link}listartag/` + userId, {
+        let response = await fetch(`${link}api/Tag/listartag/` + userId, {
+            //let response = await fetch(`${link}listartag/` + userId, {
             method: "GET",
             headers: {
                 "content-type": "application/json"
@@ -57,11 +57,17 @@ function PainelEsquerdo({ enviarTag, enviarTelaSelecionada,enviarNotaSelecionada
         enviarTag(null)
         enviarNotaSelecionada(null);
 
+        console.log("Home", tela)
+
+        window.location.href = "/notes";
+
     }
 
     const clickArchive = (tela) => {
 
         enviarTelaSelecionada(tela);
+
+        console.log("Archive", tela)
 
     }
 

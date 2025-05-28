@@ -6,7 +6,7 @@ import { faArrowRight, faCircleHalfStroke, faLock } from '@fortawesome/free-soli
 
 
 
-function PainelEsquerdoSettings({ enviarTelaSelecionada }) {
+function PainelEsquerdoSettings({ enviarTelaSelecionadaSettings }) {
 
 
     const clickLogout = () => {
@@ -21,11 +21,13 @@ function PainelEsquerdoSettings({ enviarTelaSelecionada }) {
     }
 
     const clickColorTheme = (tela) => {
-        enviarTelaSelecionada(tela);
+        enviarTelaSelecionadaSettings(tela);
+        console.log("Tela Theme", tela)
     }
 
     const clickChangePassword = (tela) => {
-        enviarTelaSelecionada(tela);
+        enviarTelaSelecionadaSettings(tela);
+        console.log("Change Password", tela)
     }
 
     return (
