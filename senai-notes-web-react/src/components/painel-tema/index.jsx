@@ -28,6 +28,8 @@ function PainelTema() {
 
         localStorage.setItem("dark-mode", true);
 
+        window.location.reload();
+
     }
 
     const clickLigthMode = () => {

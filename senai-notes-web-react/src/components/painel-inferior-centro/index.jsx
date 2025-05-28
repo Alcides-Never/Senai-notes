@@ -16,10 +16,11 @@ function PainelInferiorCentro({ recebeNotaSelecionada }) {
     const [imagem, setImagemm] = useState(null);
     const [imagemURL, setImagemURL] = useState(null);
 
-    const link = 'https://apisenainoteshomologacao.azurewebsites.net/'
-
+    const link = 'https://apisenainoteshomologacao.azurewebsites.net/' 
+    //const link = 'http://localhost:3000/'
 
     useEffect(() => {
+        debugger
         if (recebeNotaSelecionada) {
             setTitulo(recebeNotaSelecionada.titulo);
             setTags(recebeNotaSelecionada.tags.map(tag => tag.nome).join(", "));
@@ -31,7 +32,8 @@ function PainelInferiorCentro({ recebeNotaSelecionada }) {
 
     const getConteudoNota = async () => {
 
-        let response = await fetch(`${link}api/Nota/buscarNota/${recebeNotaSelecionada.idNotas}`, {
+        let response = await fetch(`${link}api/Nota/buscarNota/${recebeNotaSelecionada.idNotas}`, { 
+        //let response = await fetch(`${link}buscarNota/${recebeNotaSelecionada.idNotas}`, {
             method: "GET",
             headers: {
                 "content-type": "application/json"
@@ -52,7 +54,8 @@ function PainelInferiorCentro({ recebeNotaSelecionada }) {
 
         let userId = localStorage.getItem("meuId");
 
-        const response = await fetch(`${link}api/Nota/editarNota/${recebeNotaSelecionada.idNotas}`, {
+        const response = await fetch(`${link}api/Nota/editarNota/${recebeNotaSelecionada.idNotas}`, { 
+        //const response = await fetch(`${link}buscarNota/${recebeNotaSelecionada.idNotas}`, {
             method: "PUT",
             headers: {
                 "Authorization": "Bearer " + localStorage.getItem("meuToken"),
@@ -78,6 +81,7 @@ function PainelInferiorCentro({ recebeNotaSelecionada }) {
     }
 
     const clickSalvarImg = async () => {  /*Exemplo de estutura para enviar imagem */
+
 
         let userId = localStorage.getItem("meuId");
 

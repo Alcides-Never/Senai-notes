@@ -10,7 +10,8 @@ function Login() {
     const [senha, setSenha] = useState("");
     const [flagDarkMode, setFlagDarkMode] = useState(false);
 
-    const link = 'https://apisenainoteshomologacao.azurewebsites.net/'
+    const link = 'https://apisenainoteshomologacao.azurewebsites.net/'  
+    //const link = 'http://localhost:3000/'
 
     useEffect(() => {
 
@@ -35,7 +36,8 @@ function Login() {
         } else if (emailValid == false) {
             alert("Email inválido. Tente novamente");
         } else {
-            let response = await fetch(`${link}api/UsuarioControllers/login`, {
+            let response = await fetch(`${link}api/UsuarioControllers/login`, { 
+            //let response = await fetch(`${link}users`, {
                 headers: {
                     "content-Type": "application/json"
                 },
@@ -54,7 +56,11 @@ function Login() {
 
                 let userId = json.usuario.idUsuario;
                 let token = json.token;
-                let nome = json.usuario.nome;
+                let nome = json.usuario.nome;  
+
+                // let userId = json.idUsuario;
+                // let token = json.token;
+                // let nome = json.nome;
 
 
                 // GUARDAR INFORMAÇÃO NA PAGINA
@@ -62,7 +68,7 @@ function Login() {
                 localStorage.setItem("meuToken", token);
                 localStorage.setItem("nome", nome);
 
-                // alert("Login realizado com sucesso. Seja Bem Vindo(a) " + nome);
+                // alert("Login realizado com sucesso. Seja Bem Vindo(a) " + nome); 
                 toast.success("Login realizado com sucesso. Seja Bem Vindo(a) " + nome);
 
                 window.location.href = "/notes"

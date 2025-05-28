@@ -1,7 +1,7 @@
 import './painel-superior-settings.css';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faGear, faMagnifyingGlass, faUser } from '@fortawesome/free-solid-svg-icons';
+import { faGear, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 
 function PainelSuperiorSettings() {
 

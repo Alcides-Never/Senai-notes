@@ -1,7 +1,7 @@
 import './painel-superior.css';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faGear, faMagnifyingGlass, faUser } from '@fortawesome/free-solid-svg-icons';
+import { faGear, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import { useState } from 'react';
 
 function PainelSuperior({enviarTexto}) {

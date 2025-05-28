@@ -15,6 +15,7 @@ function PainelEsquerdoSettings({ enviarTelaSelecionada }) {
         localStorage.removeItem('meuToken');
         localStorage.removeItem('nome');
         localStorage.removeItem('dark-mode');
+        
         window.location.href = "/login";
 
     }
