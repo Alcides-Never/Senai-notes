@@ -21,7 +21,7 @@ function PainelInferiorCentro({ recebeNotaSelecionada }) {
     //const link = 'http://localhost:3000/'
 
     useEffect(() => {
-        debugger
+ 
         if (recebeNotaSelecionada) {
             setTitulo(recebeNotaSelecionada.titulo);
             setTags(recebeNotaSelecionada.tags.map(tag => capitalizeFirstLetter(tag.nome)).join(", "));

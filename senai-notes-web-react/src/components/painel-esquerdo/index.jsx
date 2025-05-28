@@ -10,7 +10,7 @@ import { faArrowRight } from '@fortawesome/free-solid-svg-icons/faArrowRight';
 import { useEffect, useState } from 'react';
 
 
-function PainelEsquerdo({ enviarTag, enviarTelaSelecionada }) {
+function PainelEsquerdo({ enviarTag, enviarTelaSelecionada,enviarNotaSelecionada }) {
 
     const [tags, setTags] = useState([]);
     const [flagDarkMode, setFlagDarkMode] = useState(false);
@@ -55,6 +55,7 @@ function PainelEsquerdo({ enviarTag, enviarTelaSelecionada }) {
 
         enviarTelaSelecionada(tela);
         enviarTag(null)
+        enviarNotaSelecionada(null);
 
     }
 

@@ -11,7 +11,7 @@ import { useState } from 'react';
 function Settings() {
 
     const [tela, setTela] = useState(null);
-
+  
     return (
         <>
             <div className="tela-settings">

@@ -40,7 +40,8 @@ function Notes() {
             <div className="tela">
 
                 <PainelEsquerdo enviarTag={tag => setTag(tag)}
-                    enviarTelaSelecionada={tela => setTela(tela)} />
+                    enviarTelaSelecionada={tela => setTela(tela)} 
+                    enviarNotaSelecionada={nota => setNoteSelecionada(nota)}/>
 
                 <main className='notas-direita'>
 
