@@ -8,7 +8,8 @@ function Usuario() {
     const [email, setEmail] = useState("");
     const [senha, setSenha] = useState("");
 
-    const link = 'https://apisenainoteshomologacao.azurewebsites.net/'
+    const link = 'https://apisenainoteshomologacao.azurewebsites.net/' 
+    //const link = 'http://localhost:3000/'
 
     const clickSignUp = async () => {
 
@@ -39,10 +40,11 @@ function Usuario() {
                 senha: senha,
                 nome: nome,
                 dataCriacao: new Date().toISOString(),
-                tags: [" "]               
+                tags: [""]               
             };
 
-            let response = await fetch(`${link}api/UsuarioControllers/cadastrar`, { 
+            let response = await fetch(`${link}api/UsuarioControllers/cadastrar`, {  
+            //let response = await fetch(`${link}users`, { 
                 method: "POST",
                 headers: {
                     "content-Type": "application/json"

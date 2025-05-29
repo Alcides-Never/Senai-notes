@@ -1,6 +1,7 @@
 import './painel-inferior-esquerda.css';
 
-import imgNote from '../../assets/img/Image-notes.svg'
+//import imgNote from '../../assets/img/Image-notes.svg'
+import imgNote from '../../assets/img/Note.png'
 import { useEffect, useState } from 'react';
 
 function PainelInferiorEsquerda({ enviarNotaSelecionada, tagSelecionada, enviarTextoPesquisa }) {
@@ -8,6 +9,7 @@ function PainelInferiorEsquerda({ enviarNotaSelecionada, tagSelecionada, enviarT
     const [notes, setNotes] = useState([]);
 
     const link = 'https://apisenainoteshomologacao.azurewebsites.net/'
+    //const link = 'http://localhost:3000/'
 
 
     useEffect(() => {
@@ -28,6 +30,7 @@ function PainelInferiorEsquerda({ enviarNotaSelecionada, tagSelecionada, enviarT
         let userId = localStorage.getItem("meuId");
 
         let response = await fetch(`${link}/api/Nota/listar/` + userId, {
+        //let response = await fetch(`${link}buscaNota/` + userId, {
             method: "GET",
             headers: {
                 "Authorization": "Bearer " + localStorage.getItem("meuToken"),
@@ -62,9 +65,11 @@ function PainelInferiorEsquerda({ enviarNotaSelecionada, tagSelecionada, enviarT
     const ClickCriarNote = async () => {
         let userId = localStorage.getItem("meuId");
 
+        let tituloNota = prompt("Digite o nome da nota");
+
         let estuturaNote = {
-            titulo: "Nova Nota",
-            conteudo: "Descricao nota",
+            titulo: tituloNota,
+            conteudo: "",
             dataCriacao: new Date().toISOString(),
             imgUrl: "",
             tags: "",
@@ -72,7 +77,8 @@ function PainelInferiorEsquerda({ enviarNotaSelecionada, tagSelecionada, enviarT
             imagemAnotacao: ""
         };
 
-        let response = await fetch(`${link}api/Nota/cadastrarNota`, {
+        let response = await fetch(`${link}api/Nota/cadastrarNotaSemImagem`, {
+        //let response = await fetch(`${link}buscarNota`, {
             method: "POST",
             headers: {
                 "Authorization": "Bearer " + localStorage.getItem("meuToken"),

@@ -18,7 +18,7 @@ function Notes() {
     const [textoSelecionado, setTextoSelecionado] = useState(null);
 
     const [flagDarkMode, setFlagDarkMode] = useState(false);
-    const [tela, setTela] = useState("All Notes");
+    const [tela, setTela] = useState("notas-ativas");
 
     useEffect(() => {
 
@@ -31,8 +31,6 @@ function Notes() {
             document.body.classList.remove("dark-mode");
         }
 
-        console.log("tela", tela);
-
     }, []);
 
     return (
@@ -40,17 +38,18 @@ function Notes() {
             <div className="tela">
 
                 <PainelEsquerdo enviarTag={tag => setTag(tag)}
-                    enviarTelaSelecionada={tela => setTela(tela)} />
+                    enviarTelaSelecionada={tela => setTela(tela)} 
+                    enviarNotaSelecionada={nota => setNoteSelecionada(nota)}/>
 
                 <main className='notas-direita'>
 
-                    {tela == null || tela == "All Notes" && (
+                    {tela == null || tela == "notas-ativas" && (
                         <>
                             <PainelSuperior enviarTexto={texto => setTextoSelecionado(texto)} />
                         </>
                     )}
 
-                    {tela == "Archive" && (
+                    {tela == "notas-arquivadas" && (
                         <>
                             <PainelSuperiorArchive enviarTexto={texto => setTextoSelecionado(texto)} />
                         </>
@@ -58,7 +57,7 @@ function Notes() {
 
                     <div className="inferior">
 
-                        {tela == null || tela == "All Notes" && (
+                        {tela == null || tela == "notas-ativas" && (
                             <>
                                 <PainelInferiorEsquerda enviarNotaSelecionada={note => setNoteSelecionada(note)}
                                     tagSelecionada={tag}
@@ -66,7 +65,7 @@ function Notes() {
                             </>
                         )}
 
-                        {tela == "Archive" && (
+                        {tela == "notas-arquivadas" && (
                             <>
                                 <PainelInferiorEsquerdaArchive enviarNotaSelecionada={note => setNoteSelecionada(note)}
                                     tagSelecionada={tag}

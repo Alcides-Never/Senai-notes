@@ -1,6 +1,8 @@
 import './painel-inferior-esquerda-archive.css';
 
-import imgNote from '../../assets/img/Image-notes.svg'
+//import imgNote from '../../assets/img/Image-notes.svg'
+import imgNote from '../../assets/img/Note.png'
+
 import { useEffect, useState } from 'react';
 
 function PainelInferiorEsquerdaArchive({ enviarNotaSelecionada, tagSelecionada, enviarTextoPesquisa }) {
@@ -8,6 +10,7 @@ function PainelInferiorEsquerdaArchive({ enviarNotaSelecionada, tagSelecionada, 
     const [notes, setNotes] = useState([]);
 
     const link = 'https://apisenainoteshomologacao.azurewebsites.net/'
+    //const link = 'http://localhost:3000/'
 
 
     useEffect(() => {
@@ -28,6 +31,7 @@ function PainelInferiorEsquerdaArchive({ enviarNotaSelecionada, tagSelecionada, 
         let userId = localStorage.getItem("meuId");
 
         let response = await fetch(`${link}/api/Nota/ListarTodosArquivado/` + userId, {
+        //let response = await fetch(`${link}buscarNotaArquivada/` + userId, {
             method: "GET",
             headers: {
                 "Authorization": "Bearer " + localStorage.getItem("meuToken"),

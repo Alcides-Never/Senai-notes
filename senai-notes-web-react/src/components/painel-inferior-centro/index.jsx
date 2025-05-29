@@ -5,7 +5,8 @@ import { faTags } from '@fortawesome/free-solid-svg-icons';
 import { faClock } from '@fortawesome/free-regular-svg-icons';
 import { useEffect, useState } from 'react';
 
-import imagemDescricao from "../../assets/img/imagem-Descricao.svg"
+//import imagemDescricao from "../../assets/img/imagem-Descricao.svg"
+import imagemDescricao from "../../assets/img/imagem-Anotacao.png"
 
 
 function PainelInferiorCentro({ recebeNotaSelecionada }) {
@@ -16,13 +17,14 @@ function PainelInferiorCentro({ recebeNotaSelecionada }) {
     const [imagem, setImagemm] = useState(null);
     const [imagemURL, setImagemURL] = useState(null);
 
-    const link = 'https://apisenainoteshomologacao.azurewebsites.net/'
-
+    const link = 'https://apisenainoteshomologacao.azurewebsites.net/' 
+    //const link = 'http://localhost:3000/'
 
     useEffect(() => {
+ 
         if (recebeNotaSelecionada) {
             setTitulo(recebeNotaSelecionada.titulo);
-            setTags(recebeNotaSelecionada.tags.map(tag => tag.nome).join(", "));
+            setTags(recebeNotaSelecionada.tags.map(tag => capitalizeFirstLetter(tag.nome)).join(", "));
 
             getConteudoNota();
         }
@@ -31,7 +33,8 @@ function PainelInferiorCentro({ recebeNotaSelecionada }) {
 
     const getConteudoNota = async () => {
 
-        let response = await fetch(`${link}api/Nota/buscarNota/${recebeNotaSelecionada.idNotas}`, {
+        let response = await fetch(`${link}api/Nota/buscarNota/${recebeNotaSelecionada.idNotas}`, { 
+        //let response = await fetch(`${link}buscarNota/${recebeNotaSelecionada.idNotas}`, {
             method: "GET",
             headers: {
                 "content-type": "application/json"
@@ -52,7 +55,8 @@ function PainelInferiorCentro({ recebeNotaSelecionada }) {
 
         let userId = localStorage.getItem("meuId");
 
-        const response = await fetch(`${link}api/Nota/editarNota/${recebeNotaSelecionada.idNotas}`, {
+        const response = await fetch(`${link}api/Nota/editarNota/${recebeNotaSelecionada.idNotas}`, { 
+        //const response = await fetch(`${link}buscarNota/${recebeNotaSelecionada.idNotas}`, {
             method: "PUT",
             headers: {
                 "Authorization": "Bearer " + localStorage.getItem("meuToken"),
@@ -78,6 +82,7 @@ function PainelInferiorCentro({ recebeNotaSelecionada }) {
     }
 
     const clickSalvarImg = async () => {  /*Exemplo de estutura para enviar imagem */
+
 
         let userId = localStorage.getItem("meuId");
 
@@ -137,7 +142,7 @@ function PainelInferiorCentro({ recebeNotaSelecionada }) {
                         <FontAwesomeIcon icon={faTags} className='icon' />
                         Tags
                     </p>
-                    <input type="text" className='tag-descricao' value={capitalizeFirstLetter(tags)} onChange={event => setTags(event.target.value)} />
+                    <input type="text" className='tag-descricao' value={tags} onChange={event => setTags(event.target.value)} />
                 </div>
 
                 <div className="inf-descricao">
@@ -177,7 +182,7 @@ function PainelInferiorCentro({ recebeNotaSelecionada }) {
 }
 
 function capitalizeFirstLetter(text) {
-    //return text.charAt(0).toUpperCase() + text.slice(1);
+    return text.charAt(0).toUpperCase() + text.slice(1);
 }
 
 export default PainelInferiorCentro

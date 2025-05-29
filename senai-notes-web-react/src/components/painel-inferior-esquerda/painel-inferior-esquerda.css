@@ -82,3 +82,7 @@ body.dark-mode .inferior-esquerda {
 body.dark-mode .nota-incluida {
     color: white;
 }
+
+body.dark-mode .tag1 {
+    background-color: transparent;
+}

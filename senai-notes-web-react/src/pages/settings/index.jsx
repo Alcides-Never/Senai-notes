@@ -11,12 +11,17 @@ import { useState } from 'react';
 function Settings() {
 
     const [tela, setTela] = useState(null);
+    const [tag, setTag] = useState(null);
+    const [noteSelecionada, setNoteSelecionada] = useState(null);
 
     return (
         <>
             <div className="tela-settings">
 
-                <PainelEsquerdo />
+                <PainelEsquerdo
+                    enviarTag={tag => setTag(tag)}
+                    enviarTelaSelecionada={tela => setTela(tela)}
+                    enviarNotaSelecionada={nota => setNoteSelecionada(nota)} /> 
 
                 <main className='painel-direito'>
 
@@ -24,7 +29,7 @@ function Settings() {
 
                     <div className="painel-inferior">
 
-                        <PainelEsquerdoSettings enviarTelaSelecionada={tela => setTela(tela)} />
+                        <PainelEsquerdoSettings enviarTelaSelecionadaSettings={tela => setTela(tela)} />
 
                         {tela == "color-theme" && (
                             <>
