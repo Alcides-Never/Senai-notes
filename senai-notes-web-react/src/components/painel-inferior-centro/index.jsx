@@ -6,7 +6,7 @@ import { faClock } from '@fortawesome/free-regular-svg-icons';
 import { useEffect, useState } from 'react';
 
 //import imagemDescricao from "../../assets/img/imagem-Descricao.svg"
-import imagemDescricao from "../../assets/img/imagem-Anotacao.png"
+import imagemDescricao from "../../assets/img/Imagem-Anotacao.png"
 
 
 function PainelInferiorCentro({ recebeNotaSelecionada }) {
