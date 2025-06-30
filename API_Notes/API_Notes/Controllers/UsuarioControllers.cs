@@ -48,6 +48,7 @@ namespace API_Notes.Controllers
             return Created();
         }
 
+        /*
         [HttpGet("listar/{id}")]
         public IActionResult ListarPorId(int id)
         {
@@ -60,6 +61,7 @@ namespace API_Notes.Controllers
             }
             return Ok(usuario);
         }
+        */
 
         [HttpPut("editar/{id}")]
 

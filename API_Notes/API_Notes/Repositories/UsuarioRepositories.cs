@@ -56,10 +56,10 @@ namespace API_Notes.Repositories
 
         }
 
-        Usuario IUsuarioRepositories.BuscarPorID(int id)
+       /* Usuario IUsuarioRepositories.BuscarPorID(int id)
         {
             return _context.Usuarios.FirstOrDefault(u => u.IdUsuario == id);
-        }
+        } */
 
 
         void IUsuarioRepositories.Cadastrar(CadastrarUsuarioDTO usuario)

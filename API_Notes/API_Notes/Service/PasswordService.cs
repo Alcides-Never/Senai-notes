@@ -11,7 +11,6 @@ namespace API_Notes.Service
     {
         private readonly PasswordHasher<Usuario> _hasher = new();
 
-
         public string HashPassword(Usuario usuario)
         {
             return _hasher.HashPassword(usuario, usuario.Senha);

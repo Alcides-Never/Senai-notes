@@ -7,7 +7,7 @@ namespace API_Notes.Interfaces
     {
         List<Usuario> ListarTodos();
 
-        Usuario BuscarPorID(int id);
+        // Usuario BuscarPorID(int id);
 
         Usuario BuscarPorEmailSenha(string email, string senha);
 
