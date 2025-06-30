@@ -1,0 +1,54 @@
+.superior {
+    /* background-color: aqua; */
+    width: 100%;
+    height: 10%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #ccc;
+}
+
+.superior h1 {
+    font-size: 25px;
+    font-family: Inter;
+    margin-left: 25px;
+}
+
+.pesquisa {
+    margin-top: auto;
+    margin-bottom: 30px;
+    margin-right: 10px;
+
+    display: flex;
+    align-items: center;
+    border: none;
+    /* background-color: #F7F9FB; */
+
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.input {
+    margin-top: 0vh;
+    width: 220px;
+    height: 15px;
+    border-radius: 16px;
+    border: none;
+    color: black;
+    background-color: transparent;
+    padding: 12px;
+}
+
+.superior .icon {
+    font-size: 15px;
+    margin-right: 10px;
+    margin-left: 10px;
+}
+
+/*********************** Darkmode *************************/
+
+body.dark-mode .superior h1 {
+    color: white;
+}
+
+/*********************** Darkmode *************************/

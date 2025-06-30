@@ -1,0 +1,98 @@
+.page-container h1 {
+    font-size: 34px;
+    font-family: Inter;
+    font-weight: bolder;
+    margin-bottom: 1px;
+}
+
+.login-container {
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 40vh;
+    width: 20vw;
+
+}
+
+.borda-login {
+
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.page-container {
+    width: 30vw;
+    /* estava 23 */
+    height: 70vh;
+    /* estava 55 */
+    border: 1px solid gray;
+    border-radius: 10px;
+    padding: 20px;
+    padding-left: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-height: 500px;
+    max-width: 500px;
+}
+
+.page-container img {
+
+    height: 5vh;
+    margin-bottom: 24px;
+}
+
+.descricao-login {
+    font-family: Inter;
+    font-weight: bold;
+    font-size: 15px;
+    margin-top: 35px;
+    /* aqui */
+}
+
+/* .label p {
+    font-family: Inter;
+    font-weight: bold;
+} */
+
+.label a {
+    color: #525866;
+    font-family: Inter;
+    font-size: 12px;
+}
+
+.valida-login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.link {
+    color: black;
+    font-size: 14px;
+    font-family: Inter;
+}
+
+/*********************** Darkmode *************************/
+
+body.dark-mode .borda-login {
+    background-color: black !important;
+}
+
+body.dark-mode .page-container h1 {
+    color: white;
+}
+
+body.dark-mode .page-container p {
+    color: white;
+}
+
+body.dark-mode .link {
+    color: white;
+}
+
+/*********************** Darkmode *************************/

@@ -1,0 +1,102 @@
+{
+  "users": [
+    {
+      "id": "1a2f",
+      "email": "rosa@email.com",
+      "senha": "123456",
+      "idUsuario": 1
+    },
+    {
+      "id": "ca35",
+      "email": "rsianga@email.com",
+      "senha": "12345"
+    },
+    {
+      "id": "0e7d",
+      "email": "rsianga@email.com",
+      "senha": "12345"
+    },
+    {
+      "id": "2466",
+      "email": "rsianga@email.com",
+      "senha": "12345"
+    }
+  ],
+  "listartag": [
+    {
+      "nome": "Pessoal",
+      "idTag": "1",
+      "idUsuario": 1
+    },
+    {
+      "nome": "React",
+      "idTag": "2",
+      "idUsuario": 1
+    },
+    {
+      "nome": "Dev",
+      "idTag": "3",
+      "idUsuario": 1
+    },
+    {
+      "nome": "Angular",
+      "idTag": "4",
+      "idUsuario": 1
+    }
+  ],
+  "buscarNota": [
+    {
+      "idNotas": "1",
+      "tituto": "React Development",
+      "conteudo": "Nova anotação de React",
+      "dataCriacao": "2025-05-19T19:53:40.182Z",
+      "dataEdicao": "2025-05-19T19:53:40.182Z",
+      "tags": [
+        {
+          "idTag": 2,
+          "nome": "Dev"
+        },
+        {
+          "idTag": 3,
+          "nome": "React"
+        },
+        {
+          "idTag": 4,
+          "nome": "Angular"
+        }
+      ],
+      "idUsuario": 1
+    }
+  ],
+  "buscarNotaArquivada": [
+    {
+      "idNotas": "1",
+      "tituto": "React Development",
+      "conteudo": "Nova anotação de React",
+      "dataCriacao": "2025-05-19T19:53:40.182Z",
+      "dataEdicao": "2025-05-19T19:53:40.182Z",
+      "tags": [
+        {
+          "idTag": 2,
+          "nome": "Dev"
+        },
+        {
+          "idTag": 3,
+          "nome": "React"
+        },
+        {
+          "idTag": 4,
+          "nome": "Angular"
+        }
+      ],
+      "idUsuario": 1,
+      "archive": true
+    }
+  ],
+  "configuracao": [
+    {
+      "idUsuario": 1,
+      "darkMode": true
+    }
+  ]
+}

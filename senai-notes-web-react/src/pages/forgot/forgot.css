@@ -1,0 +1,43 @@
+.page-container-forgot h1 {
+    font-size: 24px;
+    font-family: Inter;
+    font-weight: bolder;
+    margin-bottom: 1px;
+}
+
+
+.forgot-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.borda-forgot {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.page-container-forgot {
+    width: 35vw;
+    /*estava 28 */
+    height: 55vh;
+    /* estava 40 */
+    border: 1px solid gray;
+    border-radius: 10px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-height: 400px;
+    max-width: 500px;
+}
+
+.page-container-forgot img {
+
+    height: 5vh;
+    margin-bottom: 24px;
+}

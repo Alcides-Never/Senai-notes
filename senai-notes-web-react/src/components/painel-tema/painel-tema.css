@@ -1,0 +1,53 @@
+
+.configuracao {
+    height: 40vh;
+    width: 25vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 15px;
+    border: 1px solid #ccc;
+}
+
+.titulo-color {
+    font-size: 25px;
+    font-family: Inter;
+    font-weight: bold;
+    width: 100%;
+    margin-left: 30px;
+}
+
+.configuracao .icon {
+    font-size: 15px;
+    margin-right: 10px;
+    margin-left: 15px;
+}
+
+.configuracao .descricao {
+    width: 100%;
+    margin-bottom: 25px;
+    margin-left: 45px;
+}
+
+/*********************** Darkmode *************************/
+
+body.dark-mode .configuracao {
+    background-color: black !important;
+}
+
+body.dark-mode .titulo-color {
+    color: white
+}
+
+body.dark-mode .descricao {
+    color: white;
+}
+
+body.dark-mode .botao-notes {
+    color: white;
+}
+
+body.dark-mode .icon {
+    color: white;
+}
+/*********************** Darkmode *************************/

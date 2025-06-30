@@ -1,0 +1,34 @@
+.inferior-esquerda-settings {
+    /* background-color: brown; */
+    width: 20%;
+    height: 100%;
+    border-right: 1px solid #ccc;
+}
+
+.botao-notes .icon {
+    font-size: 15px;
+    margin-right: 10px;
+    margin-left: 10px;
+}
+
+.botao-notes .seta {
+    font-size: 15px;
+    margin-left: auto;
+    margin-right: 10px;
+}
+
+/*********************** Darkmode *************************/
+
+body.dark.mode .inferior-esquerda-settings {
+    background-color: black !important;
+}
+
+body.dark.mode .botao-notes {
+    color: white;
+}
+
+body.dark.mode .icon {
+    color: white;
+}
+
+/*********************** Darkmode *************************/
